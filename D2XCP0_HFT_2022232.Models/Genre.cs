@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace D2XCP0_HFT_2022232.Models
 {
-    internal class Genre
+    public class Genre
     {
     }
 }

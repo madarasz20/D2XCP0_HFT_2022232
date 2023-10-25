@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,6 @@ namespace D2XCP0_HFT_2022232.Models
 {
     public class Book
     {
-
         [Key] 
         public int BookID { get; set; }
         [Required]
@@ -21,6 +21,13 @@ namespace D2XCP0_HFT_2022232.Models
         public int Price { get; set; }
         public double Rating { get; set; }
         public int NumberOfReviews { get; set; }
+
+        // Navigation properties to represent the relationships
+        [ForeignKey("AuthorID")]
+        public virtual Author Author { get; set; }
+
+        [ForeignKey("GenreID")]
+        public virtual Genre Genre { get; set; }
 
     }
 }

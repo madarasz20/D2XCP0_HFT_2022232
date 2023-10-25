@@ -14,5 +14,9 @@ namespace D2XCP0_HFT_2022232.Repository
         {
             this.Database.EnsureCreated();
         }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            base.OnConfiguring(optionsBuilder);
+        }
     }
 }

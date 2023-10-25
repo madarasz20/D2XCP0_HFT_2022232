@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.4.4" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\D2XCP0_HFT_2022232.Models\D2XCP0_HFT_2022232.Models.csproj" />
   </ItemGroup>
 

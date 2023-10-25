@@ -1,6 +1,6 @@
 ﻿using D2XCP0_HFT_2022232.Models;
 using System;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace D2XCP0_HFT_2022232.Repository
 {
@@ -9,5 +9,10 @@ namespace D2XCP0_HFT_2022232.Repository
         public DbSet<Book> Books { get; set; }
         public DbSet<Author> Authors { get; set; }
         public DbSet<Genre> Genres { get; set; }
+
+        public BookStorageDb()
+        {
+            this.Database.EnsureCreated();
+        }
     }
 }

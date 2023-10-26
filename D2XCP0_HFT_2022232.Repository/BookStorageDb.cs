@@ -16,7 +16,12 @@ namespace D2XCP0_HFT_2022232.Repository
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            base.OnConfiguring(optionsBuilder);
+            if (!optionsBuilder.IsConfigured)
+            {
+                string conn = @"";
+                optionsBuilder.UseLazyLoadingProxies().UseSqlServer(conn);
+            }
         }
+
     }
 }

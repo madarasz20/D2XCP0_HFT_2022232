@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace D2XCP0_HFT_2022232.Repository
 {
-    public interface IRepository
+    public interface IRepository<T> where T : class
     {
         void Create(Book book);
         Book Read(int id);

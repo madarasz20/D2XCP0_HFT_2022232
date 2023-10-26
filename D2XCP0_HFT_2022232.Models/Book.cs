@@ -25,7 +25,7 @@ namespace D2XCP0_HFT_2022232.Models
 
         public int Price { get; set; }
         public double Rating { get; set; }
-        public int NumberOfReviews { get; set; }
+        
 
         // Navigation properties to represent the relationships
         

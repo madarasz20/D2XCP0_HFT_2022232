@@ -20,13 +20,13 @@ namespace D2XCP0_HFT_2022232.Repository
 
             if (!optionsBuilder.IsConfigured)
             {
-                string conn =
-                    @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Book.mdf;Integrated Security=True;MultipleActiveResultSets=true";
-                optionsBuilder.UseLazyLoadingProxies().UseSqlServer(conn);
+                //string conn =
+                //    @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Book.mdf;Integrated Security=True;MultipleActiveResultSets=true";
+                //optionsBuilder.UseLazyLoadingProxies().UseSqlServer(conn);
 
-                //optionsBuilder
-                //    .UseInMemoryDatabase("BookStorageDb")
-                //    .UseLazyLoadingProxies();
+                optionsBuilder
+                    .UseInMemoryDatabase("BookStorageDb")
+                    .UseLazyLoadingProxies();
             }
         }
 

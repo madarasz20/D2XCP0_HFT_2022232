@@ -18,5 +18,10 @@ namespace D2XCP0_HFT_2022232.Models
 
         //Navigational property
         public ICollection<Book> Books { get; set; }
+
+        public Author()
+        {
+                
+        }
     }
 }

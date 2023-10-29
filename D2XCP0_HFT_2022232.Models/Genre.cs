@@ -14,6 +14,11 @@ namespace D2XCP0_HFT_2022232.Models
         [Required]
         public string GenreName { get; set; }
 
+        public Genre()
+        {
+                
+        }
+
         //Navigational property
         public virtual ICollection<Book> Books { get; set; }
     }

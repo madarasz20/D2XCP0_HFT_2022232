@@ -16,11 +16,17 @@ namespace D2XCP0_HFT_2022232.Repository
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            // use inmemory database
+
             if (!optionsBuilder.IsConfigured)
             {
                 string conn =
                     @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Book.mdf;Integrated Security=True;MultipleActiveResultSets=true";
                 optionsBuilder.UseLazyLoadingProxies().UseSqlServer(conn);
+
+                //optionsBuilder
+                //    .UseInMemoryDatabase("BookStorageDb")
+                //    .UseLazyLoadingProxies();
             }
         }
 
@@ -70,7 +76,19 @@ namespace D2XCP0_HFT_2022232.Repository
 
             modelBuilder.Entity<Book>().HasData(new Book[]
             {
-                new Book() {BookID=1, Title = "", AuthorID = 1, GenreID = 1, Price = 1000, Rating = 2.5}
+                new Book() {BookID=1, Title = "Harry Potter and the Sorcerer's Stone", AuthorID = 1, GenreID = 9,
+                    Price = 3300, Rating = 4.8},
+                new Book() {BookID=2, Title = "", AuthorID = 1, GenreID = 1, Price = 1000, Rating = 2.5},
+                new Book() {BookID=3, Title = "", AuthorID = 1, GenreID = 1, Price = 1000, Rating = 2.5},
+                new Book() {BookID=4, Title = "", AuthorID = 1, GenreID = 1, Price = 1000, Rating = 2.5},
+                new Book() {BookID=5, Title = "", AuthorID = 1, GenreID = 1, Price = 1000, Rating = 2.5},
+                new Book() {BookID=6, Title = "", AuthorID = 1, GenreID = 1, Price = 1000, Rating = 2.5},
+                new Book() {BookID=7, Title = "", AuthorID = 1, GenreID = 1, Price = 1000, Rating = 2.5},
+                new Book() {BookID=8, Title = "", AuthorID = 1, GenreID = 1, Price = 1000, Rating = 2.5},
+                new Book() {BookID=9, Title = "", AuthorID = 1, GenreID = 1, Price = 1000, Rating = 2.5},
+                new Book() {BookID=10, Title = "", AuthorID = 1, GenreID = 1, Price = 1000, Rating = 2.5},
+                new Book() {BookID=11, Title = "", AuthorID = 1, GenreID = 1, Price = 1000, Rating = 2.5},
+                new Book() {BookID=12, Title = "", AuthorID = 1, GenreID = 1, Price = 1000, Rating = 2.5}
             });
         }
     }

@@ -25,10 +25,14 @@ namespace D2XCP0_HFT_2022232.Models
 
         public int Price { get; set; }
         public double Rating { get; set; }
-        
+
+        public Book()
+        {
+                
+        }
 
         // Navigation properties to represent the relationships
-        
+
         public virtual Author Author { get; set; }
         public virtual Genre Genre { get; set; }
 

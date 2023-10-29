@@ -6,7 +6,7 @@ namespace D2XCP0_HFT_2022232.Client
     {
         static void Main(string[] args)
         {
-
+            
         }
     }
 }

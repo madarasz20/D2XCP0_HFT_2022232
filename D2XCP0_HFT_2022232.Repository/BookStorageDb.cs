@@ -56,9 +56,9 @@ namespace D2XCP0_HFT_2022232.Repository
                 new Genre(){GenreID=4, GenreName="Romance"},
                 new Genre(){GenreID=5, GenreName="Science Fiction"},
                 new Genre(){GenreID=6, GenreName="Fantasy"},
-                new Genre(){GenreID=7, GenreName="Horror"},
-                new Genre(){GenreID=8, GenreName="Thriller"},
-                new Genre(){GenreID=9, GenreName="Adventure"},
+                new Genre(){GenreID=7, GenreName="Thriller"},
+                new Genre(){GenreID=8, GenreName="Novell"},
+                new Genre(){GenreID=9, GenreName="Classic"},
             });
 
             modelBuilder.Entity<Author>().HasData(new Author[]
@@ -78,17 +78,17 @@ namespace D2XCP0_HFT_2022232.Repository
             {
                 new Book() {BookID=1, Title = "Harry Potter and the Sorcerer's Stone", AuthorID = 1, GenreID = 9,
                     Price = 3300, Rating = 4.8},
-                new Book() {BookID=2, Title = "", AuthorID = 1, GenreID = 1, Price = 1000, Rating = 2.5},
-                new Book() {BookID=3, Title = "", AuthorID = 1, GenreID = 1, Price = 1000, Rating = 2.5},
-                new Book() {BookID=4, Title = "", AuthorID = 1, GenreID = 1, Price = 1000, Rating = 2.5},
-                new Book() {BookID=5, Title = "", AuthorID = 1, GenreID = 1, Price = 1000, Rating = 2.5},
-                new Book() {BookID=6, Title = "", AuthorID = 1, GenreID = 1, Price = 1000, Rating = 2.5},
-                new Book() {BookID=7, Title = "", AuthorID = 1, GenreID = 1, Price = 1000, Rating = 2.5},
-                new Book() {BookID=8, Title = "", AuthorID = 1, GenreID = 1, Price = 1000, Rating = 2.5},
-                new Book() {BookID=9, Title = "", AuthorID = 1, GenreID = 1, Price = 1000, Rating = 2.5},
-                new Book() {BookID=10, Title = "", AuthorID = 1, GenreID = 1, Price = 1000, Rating = 2.5},
-                new Book() {BookID=11, Title = "", AuthorID = 1, GenreID = 1, Price = 1000, Rating = 2.5},
-                new Book() {BookID=12, Title = "", AuthorID = 1, GenreID = 1, Price = 1000, Rating = 2.5}
+                new Book() {BookID=2, Title = "Pride and Prejudice", AuthorID = 2, GenreID = 1, Price = 4265, Rating = 5.0},
+                new Book() {BookID=3, Title = "The Adventures of Huckleberry Finn", AuthorID = 3, GenreID = 8, Price = 2350, Rating = 4.2},
+                new Book() {BookID=4, Title = "Metamorphosis", AuthorID = 9, GenreID = 6, Price = 1435, Rating = 4.7},
+                new Book() {BookID=5, Title = "The Outsider", AuthorID = 4, GenreID = 7, Price = 3400, Rating = 4.3},
+                new Book() {BookID=6, Title = "The Shining", AuthorID = 4, GenreID = 7, Price = 4300, Rating = 4.5},
+                new Book() {BookID=7, Title = "The Old Man and the Sea", AuthorID = 8, GenreID = 9, Price = 3765, Rating = 4.2},
+                new Book() {BookID=8, Title = "Beloved", AuthorID = 6, GenreID = 4, Price = 4441, Rating = 4.1},
+                new Book() {BookID=9, Title = "Oliver Twist", AuthorID = 7, GenreID = 9, Price = 3800, Rating = 4.6},
+                new Book() {BookID=10, Title = "1984", AuthorID = 5, GenreID = 5, Price = 3790, Rating = 4.0},
+                new Book() {BookID=11, Title = "The Adventures of Tom Sawyer", AuthorID = 3, GenreID = 9, Price = 1045, Rating = 4.0},
+                new Book() {BookID=12, Title = "Letters to Milena", AuthorID = 9, GenreID = 4, Price = 1750, Rating = 4.8}
             });
         }
     }

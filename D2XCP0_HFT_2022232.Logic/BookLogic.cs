@@ -28,7 +28,7 @@ namespace D2XCP0_HFT_2022232.Logic
             }
             else
             {
-                throw new ArgumentException("Invalid game name");
+                throw new ArgumentException("Invalid book name");
             }
         }
         public Book Read(int id)

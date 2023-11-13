@@ -16,7 +16,7 @@ namespace D2XCP0_HFT_2022232.Models
 
         public Genre()
         {
-                
+            Books = new HashSet<Book>();
         }
 
         //Navigational property

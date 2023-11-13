@@ -9,10 +9,10 @@ namespace D2XCP0_HFT_2022232.Repository
 {
     public interface IRepository<T> where T : class
     {
-        void Create(Book book);
-        Book Read(int id);
-        IQueryable<Book> ReadAll();
-        void Update(Book book);
+        void Create(T item);
+        T Read(int id);
+        IQueryable<T> ReadAll();
+        void Update(T book);
         void Delete(int id);
     }
 }

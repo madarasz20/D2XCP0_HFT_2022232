@@ -9,7 +9,7 @@ namespace D2XCP0_HFT_2022232.Logic
 {
     public interface IBookLogic
     {
-        void Create(Book game);
+        void Create(Book book);
         Book Read(int id);
         void Update(Book item);
         void Delete(int id);

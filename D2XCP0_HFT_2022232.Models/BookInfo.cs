@@ -13,5 +13,6 @@ namespace D2XCP0_HFT_2022232.Models
         public string Genre { get; set; }
         public double Rating { get; set; }
         public int Price { get; set; }
+        public int Pages { get; set; }
     }
 }

@@ -2,6 +2,7 @@
 using D2XCP0_HFT_2022232.Repository;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -74,26 +75,93 @@ namespace D2XCP0_HFT_2022232.Logic
 
         public IEnumerable<BookInfo> LongestTitleBookInfo()
         {
-            throw new NotImplementedException();
-        }
+            BookInfo bf = repo
+                .ReadAll()
+                .Select(x => new BookInfo
+                {
+                    Title = x.Title,
+                    AuthorName = x.Author.AuthorName,
+                    Genre = x.Genre.GenreName,
+                    Rating = x.Rating,
+                    Price = x.Price
+
+                })
+                .OrderByDescending(x => x.Title.Length)
+                .FirstOrDefault();
+
+            IEnumerable<BookInfo> rtw = new List<BookInfo>()
+            {
+                bf
+            };
+            return rtw;
+        }     
 
         public IEnumerable<BookInfo> MostExpensiveBookInfo()
         {
-            throw new NotImplementedException();
+            BookInfo bf = repo
+                .ReadAll()
+                .Select(x => new BookInfo
+                {
+                    Title = x.Title,
+                    AuthorName = x.Author.AuthorName,
+                    Genre = x.Genre.GenreName,
+                    Rating = x.Rating,
+                    Price = x.Price
+
+                })
+                .OrderByDescending(x => x.Price)
+                .FirstOrDefault();
+
+            IEnumerable<BookInfo> rtw = new List<BookInfo>()
+            {
+                bf
+            };
+            return rtw;
         }
 
         public IEnumerable<BookInfo> MostPagesInABookInfo()
         {
-            throw new NotImplementedException();
+            BookInfo bf = repo
+                .ReadAll()
+                .Select(x => new BookInfo
+                {
+                    Title = x.Title,
+                    AuthorName = x.Author.AuthorName,
+                    Genre = x.Genre.GenreName,
+                    Rating = x.Rating,
+                    Price = x.Price
+
+                })
+                .OrderByDescending(x => x.Pages)
+                .FirstOrDefault();
+
+            IEnumerable<BookInfo> rtw = new List<BookInfo>()
+            {
+                bf
+            };
+            return rtw;
         }
-
-       
-
-        
-
         public IEnumerable<BookInfo> WorstRatedBookInfo()
         {
-            throw new NotImplementedException();
+            BookInfo res = repo
+               .ReadAll()
+               .Select(x => new BookInfo
+               {
+                   Title = x.Title,
+                   AuthorName = x.Author.AuthorName,
+                   Genre = x.Genre.GenreName,
+                   Rating = x.Rating,
+                   Price = x.Price
+
+               })
+               .OrderBy(g => g.Rating)
+               .FirstOrDefault();
+
+            IEnumerable<BookInfo> bf = new List<BookInfo>()
+            {
+                res
+            };
+            return bf;
         }
     }
 }

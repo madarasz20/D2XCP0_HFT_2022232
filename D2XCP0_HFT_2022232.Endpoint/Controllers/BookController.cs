@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace D2XCP0_HFT_2022232.Endpoint.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class BookController : ControllerBase
     {
@@ -25,21 +25,21 @@ namespace D2XCP0_HFT_2022232.Endpoint.Controllers
 
         // GET api/<BookController>/5
         [HttpGet("{id}")]
-        public Book Get(int id)
+        public Book Read(int id)
         {
             return this.logic.Read(id);
         }
 
         // POST api/<BookController>
         [HttpPost]
-        public void Post([FromBody] Book value)
+        public void Create([FromBody] Book value)
         {
             this.logic.Create(value);
         }
 
         // PUT api/<BookController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Book value)
+        [HttpPut]
+        public void Update([FromBody] Book value)
         {
             this.logic.Update(value);
         }

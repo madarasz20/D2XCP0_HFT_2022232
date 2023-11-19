@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace D2XCP0_HFT_2022232.Repository
 {
-    public class AuthorRepository : AbstractRepo<Author>
+    public class AuthorRepository : AbstractRepo<Author>, IRepository<Author>
     {
         public AuthorRepository(BookStorageDb db) : base(db)
         {

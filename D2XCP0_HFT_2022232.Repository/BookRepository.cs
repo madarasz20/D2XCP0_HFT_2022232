@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace D2XCP0_HFT_2022232.Repository
 {
-    public class BookRepository : AbstractRepo<Book>
+    public class BookRepository : AbstractRepo<Book>, IRepository<Book>
     {
+        BookStorageDb context;
         public BookRepository(BookStorageDb db) : base(db)
         {
         }

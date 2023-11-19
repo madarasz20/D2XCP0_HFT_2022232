@@ -33,7 +33,12 @@ namespace D2XCP0_HFT_2022232.Logic
         }
         public Book Read(int id)
         {
-            return repo.Read(id);
+            var book = this.repo.Read(id);
+            if (book == null)
+            {
+                throw new ArgumentException("Book not exists");
+            }
+            return book;
         }
         public void Update(Book item)
         {
@@ -163,5 +168,14 @@ namespace D2XCP0_HFT_2022232.Logic
             };
             return bf;
         }
+    }
+    public class BookInfo
+    {
+        public string Title { get; set; }
+        public string AuthorName { get; set; }
+        public string Genre { get; set; }
+        public double Rating { get; set; }
+        public int Price { get; set; }
+        public int Pages { get; set; }
     }
 }

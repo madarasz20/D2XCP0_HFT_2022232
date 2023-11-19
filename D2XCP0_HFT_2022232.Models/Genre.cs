@@ -25,5 +25,6 @@ namespace D2XCP0_HFT_2022232.Models
         //Navigational property
         [JsonIgnore]
         public virtual ICollection<Book> Books { get; set; }
+
     }
 }

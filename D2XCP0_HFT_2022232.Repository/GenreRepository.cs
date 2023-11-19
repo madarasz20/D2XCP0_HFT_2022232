@@ -3,7 +3,7 @@ using D2XCP0_HFT_2022232.Models;
 
 namespace D2XCP0_HFT_2022232.Repository
 {
-    public class GenreRepository : AbstractRepo<Genre>
+    public class GenreRepository : AbstractRepo<Genre>, IRepository<Genre>
     {
         public GenreRepository(BookStorageDb db) : base(db)
         {

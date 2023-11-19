@@ -11,6 +11,10 @@ namespace D2XCP0_HFT_2022232.Client
     {
 
         static RestService rest;
+
+        static BookLogic bookLogic;
+        static AuthorLogic authorLogic;
+        static GenreLogic genreLogic;
         static void Create(string entity)
         {
             Console.WriteLine(entity + "create");
@@ -18,7 +22,15 @@ namespace D2XCP0_HFT_2022232.Client
         }
         static void List(string entity)
         {
-            Console.WriteLine(entity + "list");
+            if (entity == "Book")
+            {
+                var items = bookLogic.ReadAll();
+                Console.WriteLine("ID" + '\t' + "Title");
+                foreach (var book in items)
+                {
+                    Console.WriteLine(book.BookID + '\t' + book.Title);
+                }
+            }
             Console.ReadLine();
         }
         static void Update(string entity)
@@ -48,25 +60,30 @@ namespace D2XCP0_HFT_2022232.Client
                 .Add("List", () => List("Book"))
                 .Add("Create", () => Create("Book"))
                 .Add("Update", () => Update("Book"))
-                .Add("Delete", () => Delete("Book"));
+                .Add("Delete", () => Delete("Book"))
+                .Add("Exit", ConsoleMenu.Close);
 
             var authorSubMenu = new ConsoleMenu(args, level: 1)
                 .Add("List", () => List("Author"))
                 .Add("Create", () => Create("Author"))
                 .Add("Update", () => Update("Author"))
-                .Add("Delete", () => Delete("Author"));
+                .Add("Delete", () => Delete("Author"))
+                .Add("Exit", ConsoleMenu.Close);
 
             var genreSubMenu = new ConsoleMenu(args, level: 1)
                 .Add("List", () => List("Genre"))
                 .Add("Create", () => Create("Genre"))
                 .Add("Update", () => Update("Genre"))
-                .Add("Delete", () => Delete("Genre"));
-                
+                .Add("Delete", () => Delete("Genre"))
+                .Add("Exit", ConsoleMenu.Close);
+
 
             var menu = new ConsoleMenu(args, level: 0)
                 .Add("Books", () => bookSubMenu.Show())
                 .Add("Authors", () => authorSubMenu.Show())
-                .Add("Genre", () => genreSubMenu.Show());
+                .Add("Genre", () => genreSubMenu.Show())
+                .Add("Exit", ConsoleMenu.Close);
+
             
             menu.Show();
         }

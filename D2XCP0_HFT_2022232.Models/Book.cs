@@ -16,6 +16,7 @@ namespace D2XCP0_HFT_2022232.Models
         public int BookID { get; set; }
         [Required]
         [StringLength(70)]
+        [MinLength(5)]
         public string Title { get; set; }
 
 

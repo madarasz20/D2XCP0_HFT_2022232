@@ -22,7 +22,7 @@ namespace D2XCP0_HFT_2022232.Logic
 
         public void Create(Book book)
         {
-            if (book.Title.Length > 0)
+            if (book.Title.Length >= 5)
             {
                 repo.Create(book);
             }

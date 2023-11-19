@@ -6,7 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\D2XCP0_HFT_2022232.Logic\D2XCP0_HFT_2022232.Logic.csproj" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\D2XCP0_HFT_2022232.Models\D2XCP0_HFT_2022232.Models.csproj" />
   </ItemGroup>
 

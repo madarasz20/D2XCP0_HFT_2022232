@@ -4,13 +4,15 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace D2XCP0_HFT_2022232.Models
 {
     public class Book
     {
-        [Key] 
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int BookID { get; set; }
         [Required]
         [StringLength(70)]
@@ -33,8 +35,9 @@ namespace D2XCP0_HFT_2022232.Models
         }
 
         // Navigation properties to represent the relationships
-
+        [JsonIgnore]
         public virtual Author Author { get; set; }
+        [JsonIgnore]
         public virtual Genre Genre { get; set; }
 
     }

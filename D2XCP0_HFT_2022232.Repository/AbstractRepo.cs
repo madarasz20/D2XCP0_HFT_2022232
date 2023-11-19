@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace D2XCP0_HFT_2022232.Repository
 {
-    public abstract class AbstractRepo<T> where T : class
+    public abstract class AbstractRepo<T> : IRepository<T> where T : class
     {
         protected BookStorageDb db;
 

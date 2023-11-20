@@ -13,7 +13,7 @@ namespace D2XCP0_HFT_2022232.Repository
         void Create(T item);
         T Read(int id);
         IQueryable<T> ReadAll();
-        void Update(T book);
+        void Update(T item);
         void Delete(int id);
     }
 }

@@ -36,9 +36,9 @@ namespace D2XCP0_HFT_2022232.Models
         }
 
         // Navigation properties to represent the relationships
-        [JsonIgnore]
+        
         public virtual Author Author { get; set; }
-        [JsonIgnore]
+        
         public virtual Genre Genre { get; set; }
 
     }

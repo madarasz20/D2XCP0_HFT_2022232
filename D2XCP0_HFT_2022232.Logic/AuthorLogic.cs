@@ -21,29 +21,34 @@ namespace D2XCP0_HFT_2022232.Logic
         public void Create(Author item)
         {
             if (item.AuthorName.Length > 0)
-                repo.Create(item);
+            {
+                this.repo.Create(item);
+            }
             else
+            {
                 throw new ArgumentException("Invalid author name");
+            }
+            Console.ReadLine();
         }
 
         public void Delete(int id)
         {
-            repo.Delete(id);
+            this.repo.Delete(id);
         }
 
         public Author Read(int id)
         {
-            return repo.Read(id);
+            return this.repo.Read(id);
         }
 
         public IEnumerable<Author> ReadAll()
         {
-            return repo.ReadAll();
+            return this.repo.ReadAll();
         }
 
         public void Update(Author item)
         {
-            repo.Update(item);
+            this.repo.Update(item);
         }
     }
 }

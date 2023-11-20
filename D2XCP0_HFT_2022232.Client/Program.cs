@@ -2,8 +2,7 @@
 using System;
 using System.Collections.Generic;
 using D2XCP0_HFT_2022232.Models;
-using D2XCP0_HFT_2022232.Repository;
-using D2XCP0_HFT_2022232.Logic;
+using System.Reflection;
 
 namespace D2XCP0_HFT_2022232.Client
 {
@@ -12,49 +11,87 @@ namespace D2XCP0_HFT_2022232.Client
 
         static RestService rest;
 
-        static BookLogic bookLogic;
-        static AuthorLogic authorLogic;
-        static GenreLogic genreLogic;
         static void Create(string entity)
         {
-            Console.WriteLine(entity + "create");
+            if (entity == "Author")
+            {
+                Console.WriteLine("Enter Author name:");
+                string name = Console.ReadLine();
+                Console.WriteLine();
+                Author a = new Author() { AuthorName = name };
+                rest.Post(a, "author");
+            }
             Console.ReadLine();
+
         }
         static void List(string entity)
         {
-            if (entity == "Book")
+            if (entity == "Author")
             {
-                var items = bookLogic.ReadAll();
-                Console.WriteLine("ID" + '\t' + "Title");
-                foreach (var book in items)
+                List<Author> authors = rest.Get<Author>("author");
+                foreach (var item in authors)
                 {
-                    Console.WriteLine(book.BookID + '\t' + book.Title);
+                    Console.WriteLine(item.AuthorName);
+                }
+            }
+            else if(entity == "Book")
+            {
+                List<Book> books = rest.Get<Book>("book");
+                foreach (var item in books)
+                {
+                    Console.WriteLine(item.Title);
+                }
+            }
+            else if (entity == "Genre")
+            {
+                List<Genre> genres = rest.Get<Genre>("genre");
+                foreach (var item in genres)
+                {
+                    Console.WriteLine(item.GenreName);
                 }
             }
             Console.ReadLine();
         }
         static void Update(string entity)
         {
-            Console.WriteLine(entity + "update");
+            if (entity == "Author")
+            {
+                Console.WriteLine("Enter author's id to update:");
+                int id = int.Parse(Console.ReadLine());
+                Author one = rest.Get<Author>(id, "author");
+                Console.WriteLine($"Enter new name [old name: {one.AuthorName} ]: ");
+                string name = Console.ReadLine();
+                one.AuthorName = name;
+                rest.Put(one, "author");
+            }
             Console.ReadLine();
         }
         static void Delete(string entity)
         {
-            Console.WriteLine(entity + "delete");
+            if (entity == "Author")
+            {
+                Console.WriteLine("Enter author's id to delete: ");
+                int id = int.Parse(Console.ReadLine());
+                rest.Delete(id, "author");
+            }
+            else if (entity == "Book")
+            {
+                Console.WriteLine("Enter book's id to delete: ");
+                int id = int.Parse(Console.ReadLine());
+                rest.Delete(id, "book");
+            }
+            else if (entity == "Genre")
+            {
+                Console.WriteLine("Enter genre's id to delete: ");
+                int id = int.Parse(Console.ReadLine());
+                rest.Delete(id, "genre");
+            }
             Console.ReadLine();
         }
         static void Main(string[] args)
         {
-            //rest = new RestService("http://localhost:55033/", "book");
-            var ctx = new BookStorageDb();
+            rest = new RestService("http://localhost:55033/", "book");
 
-            var bookrepo = new BookRepository(ctx);
-            var authorrepo = new AuthorRepository(ctx);
-            var genrerepo = new GenreRepository(ctx);
-
-            var booklogic = new BookLogic(bookrepo);
-            var authorlogic = new AuthorLogic(authorrepo);
-            var genrelogic = new GenreLogic(genrerepo);
 
             var bookSubMenu = new ConsoleMenu(args, level: 1)
                 .Add("List", () => List("Book"))
@@ -80,7 +117,8 @@ namespace D2XCP0_HFT_2022232.Client
 
             var menu = new ConsoleMenu(args, level: 0)
                 .Add("Books", () => bookSubMenu.Show())
-                .Add("Authors", () => authorSubMenu.Show())
+                .Add("Authors", () => 
+                authorSubMenu.Show())
                 .Add("Genre", () => genreSubMenu.Show())
                 .Add("Exit", ConsoleMenu.Close);
 

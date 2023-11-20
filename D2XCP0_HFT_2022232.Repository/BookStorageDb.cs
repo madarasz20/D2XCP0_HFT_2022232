@@ -20,8 +20,9 @@ namespace D2XCP0_HFT_2022232.Repository
             {
 
                 optionsBuilder
-                    .UseInMemoryDatabase("BookStorageDb")
-                    .UseLazyLoadingProxies();
+
+                    .UseLazyLoadingProxies()
+                    .UseInMemoryDatabase("BookStorageDb");
             }
         }
 

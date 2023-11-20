@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace D2XCP0_HFT_2022232.Logic
 {
-    public partial class BookLogic : IBookLogic
+    public class BookLogic : IBookLogic
     {
         IRepository<Book> repo;
 
@@ -24,7 +24,7 @@ namespace D2XCP0_HFT_2022232.Logic
         {
             if (book.Title.Length >= 5)
             {
-                repo.Create(book);
+                this.repo.Create(book);
             }
             else
             {
@@ -42,16 +42,16 @@ namespace D2XCP0_HFT_2022232.Logic
         }
         public void Update(Book item)
         {
-            repo.Update(item);
+            this.repo.Update(item);
         }
         public IQueryable<Book> ReadAll()
         {
-            return repo.ReadAll();
+            return this.repo.ReadAll();
         }
 
         public void Delete(int id)
         {
-            repo.Delete(id);
+            this.repo.Delete(id);
         }
 
         //Non-CRUDS

@@ -18,8 +18,14 @@ namespace D2XCP0_HFT_2022232.Client
                 Console.WriteLine("Enter Author name:");
                 string name = Console.ReadLine();
                 Console.WriteLine();
-                Author a = new Author() { AuthorName = name };
-                rest.Post(a, "author");
+                Console.WriteLine("Enter Author's ID:");
+                int id = int.Parse(Console.ReadLine());
+                Console.WriteLine();
+                Console.WriteLine("Enter Author's birthday [MM/DD/YYYY]:");
+                DateTime date = DateTime.Parse(Console.ReadLine());
+                Console.WriteLine();
+                Author a = new Author() { AuthorName = name , AuthorID = id, BirthDay = date};
+                rest.Post<Author>(a, "author");
             }
             Console.ReadLine();
 
@@ -62,7 +68,7 @@ namespace D2XCP0_HFT_2022232.Client
                 Console.WriteLine($"Enter new name [old name: {one.AuthorName} ]: ");
                 string name = Console.ReadLine();
                 one.AuthorName = name;
-                rest.Put(one, "author");
+                rest.Put<Author>(one, "author");
             }
             Console.ReadLine();
         }
@@ -122,6 +128,7 @@ namespace D2XCP0_HFT_2022232.Client
                 .Add("Genre", () => genreSubMenu.Show())
                 .Add("Exit", ConsoleMenu.Close);
 
+            
             
             menu.Show();
         }

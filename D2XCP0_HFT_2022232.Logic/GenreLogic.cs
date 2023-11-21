@@ -27,22 +27,22 @@ namespace D2XCP0_HFT_2022232.Logic
 
         public void Delete(int id)
         {
-            repo.Delete(id);
+            this.repo.Delete(id);
         }
 
         public Genre Read(int id)
         {
-            return repo.Read(id);
+            return this.repo.Read(id);
         }
 
-        public IEnumerable<Genre> ReadAll()
+        public IQueryable<Genre> ReadAll()
         {
-            return repo.ReadAll();
+            return this.repo.ReadAll();
         }
 
         public void Update(Genre item)
         {
-            repo.Update(item);
+            this.repo.Update(item);
         }
     }
 }

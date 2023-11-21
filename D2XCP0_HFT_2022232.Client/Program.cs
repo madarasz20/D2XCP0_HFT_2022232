@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using D2XCP0_HFT_2022232.Models;
 using System.Reflection;
+using D2XCP0_HFT_2022232.Repository;
+using D2XCP0_HFT_2022232.Logic;
 
 namespace D2XCP0_HFT_2022232.Client
 {
@@ -25,9 +27,9 @@ namespace D2XCP0_HFT_2022232.Client
                 DateTime date = DateTime.Parse(Console.ReadLine());
                 Console.WriteLine();
                 Author a = new Author() { AuthorName = name , AuthorID = id, BirthDay = date};
-                rest.Post<Author>(a, "author");
+                rest.Post(a, "author");
+                Console.ReadLine();
             }
-            Console.ReadLine();
 
         }
         static void List(string entity)
@@ -96,41 +98,58 @@ namespace D2XCP0_HFT_2022232.Client
         }
         static void Main(string[] args)
         {
-            rest = new RestService("http://localhost:55033/", "book");
+            //rest = new RestService("http://localhost:55033/", "book");
 
 
-            var bookSubMenu = new ConsoleMenu(args, level: 1)
-                .Add("List", () => List("Book"))
-                .Add("Create", () => Create("Book"))
-                .Add("Update", () => Update("Book"))
-                .Add("Delete", () => Delete("Book"))
-                .Add("Exit", ConsoleMenu.Close);
+            //var bookSubMenu = new ConsoleMenu(args, level: 1)
+            //    .Add("List", () => List("Book"))
+            //    .Add("Create", () => Create("Book"))
+            //    .Add("Update", () => Update("Book"))
+            //    .Add("Delete", () => Delete("Book"))
+            //    .Add("Exit", ConsoleMenu.Close);
 
-            var authorSubMenu = new ConsoleMenu(args, level: 1)
-                .Add("List", () => List("Author"))
-                .Add("Create", () => Create("Author"))
-                .Add("Update", () => Update("Author"))
-                .Add("Delete", () => Delete("Author"))
-                .Add("Exit", ConsoleMenu.Close);
+            //var authorSubMenu = new ConsoleMenu(args, level: 1)
+            //    .Add("List", () => List("Author"))
+            //    .Add("Create", () => Create("Author"))
+            //    .Add("Update", () => Update("Author"))
+            //    .Add("Delete", () => Delete("Author"))
+            //    .Add("Exit", ConsoleMenu.Close);
 
-            var genreSubMenu = new ConsoleMenu(args, level: 1)
-                .Add("List", () => List("Genre"))
-                .Add("Create", () => Create("Genre"))
-                .Add("Update", () => Update("Genre"))
-                .Add("Delete", () => Delete("Genre"))
-                .Add("Exit", ConsoleMenu.Close);
+            //var genreSubMenu = new ConsoleMenu(args, level: 1)
+            //    .Add("List", () => List("Genre"))
+            //    .Add("Create", () => Create("Genre"))
+            //    .Add("Update", () => Update("Genre"))
+            //    .Add("Delete", () => Delete("Genre"))
+            //    .Add("Exit", ConsoleMenu.Close);
 
 
-            var menu = new ConsoleMenu(args, level: 0)
-                .Add("Books", () => bookSubMenu.Show())
-                .Add("Authors", () => 
-                authorSubMenu.Show())
-                .Add("Genre", () => genreSubMenu.Show())
-                .Add("Exit", ConsoleMenu.Close);
+            //var menu = new ConsoleMenu(args, level: 0)
+            //    .Add("Books", () => bookSubMenu.Show())
+            //    .Add("Authors", () => authorSubMenu.Show())
+            //    .Add("Genre", () => genreSubMenu.Show())
+            //    .Add("Exit", ConsoleMenu.Close);
 
-            
-            
-            menu.Show();
+
+
+            //menu.Show();
+            //var ctx = new BookStorageDb();
+            //var repo = new BookRepository(ctx);
+            //var logic = new BookLogic(repo);
+
+            //Book n = new Book()
+            //{
+            //    BookID = 101,
+            //    Title = "VauVau",
+            //};
+
+            //logic.Create(n);
+
+            //var items = logic.ReadAll();
+
+            //var linq = logic.WorstRatedBookInfo();
+
+
+            ;
         }
     }
 }

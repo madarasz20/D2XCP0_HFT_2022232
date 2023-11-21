@@ -18,18 +18,15 @@ namespace D2XCP0_HFT_2022232.Logic
             this.repo = repo;
         }
 
-        
 
-        public void Create(Book book)
+
+        public void Create(Book item)
         {
-            if (book.Title.Length >= 5)
+            if (item.Title.Length < 3)
             {
-                this.repo.Create(book);
+                throw new ArgumentException("title too short ...");
             }
-            else
-            {
-                throw new ArgumentException("Invalid book name");
-            }
+            this.repo.Create(item);
         }
         public Book Read(int id)
         {
@@ -98,8 +95,9 @@ namespace D2XCP0_HFT_2022232.Logic
             {
                 bf
             };
+
             return rtw;
-        }     
+        }
 
         public IEnumerable<BookInfo> MostExpensiveBookInfo()
         {

@@ -1,25 +1,20 @@
 ﻿using D2XCP0_HFT_2022232.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace D2XCP0_HFT_2022232.Logic
 {
     public interface IBookLogic
     {
-        void Create(Book book);
-        Book Read(int id);
-        void Update(Book item);
-        void Delete(int id);
-        IQueryable<Book> ReadAll();
-        
-        IEnumerable<BookInfo> LongestTitleBookInfo();
         IEnumerable<BookInfo> BestRatedBookInfo();
-        IEnumerable<BookInfo> WorstRatedBookInfo();
+        void Create(Book item);
+        void Delete(int id);
+        IEnumerable<BookInfo> LongestTitleBookInfo();
         IEnumerable<BookInfo> MostExpensiveBookInfo();
         IEnumerable<BookInfo> MostPagesInABookInfo();
-        
+        Book Read(int id);
+        IQueryable<Book> ReadAll();
+        void Update(Book item);
+        IEnumerable<BookInfo> WorstRatedBookInfo();
     }
 }

@@ -41,7 +41,7 @@ namespace D2XCP0_HFT_2022232.Logic
             return this.repo.Read(id);
         }
 
-        public IEnumerable<Author> ReadAll()
+        public IQueryable<Author> ReadAll()
         {
             return this.repo.ReadAll();
         }

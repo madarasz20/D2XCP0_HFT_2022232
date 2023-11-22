@@ -17,12 +17,10 @@ namespace D2XCP0_HFT_2022232.Repository
         {
             if (!builder.IsConfigured)
             {
-                string conn =
-                    @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Book.mdf;Integrated Security=True;MultipleActiveResultSets=true";
-
+                
                 builder
                  .UseLazyLoadingProxies()
-                 .UseSqlServer(conn);
+                 .UseInMemoryDatabase("book");
             }
 
         }

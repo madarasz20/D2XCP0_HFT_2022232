@@ -9,7 +9,11 @@ namespace D2XCP0_HFT_2022232.Client
     {
         static void Main(string[] args)
         {
-            
+            IRepository<Author> repo = new AuthorRepository(new BookDbcontext());
+
+            var items = repo.ReadAll().ToArray();
+
+            ;
             
             
         }

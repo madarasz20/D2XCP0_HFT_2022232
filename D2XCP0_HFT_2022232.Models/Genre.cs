@@ -14,17 +14,21 @@ namespace D2XCP0_HFT_2022232.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int GenreID { get; set; }
-        [Required]
+        
         public string GenreName { get; set; }
-
-        public Genre()
-        {
-            Books = new HashSet<Book>();
-        }
-
-        //Navigational property
         [JsonIgnore]
         public virtual ICollection<Book> Books { get; set; }
+        public Genre()
+        {
+
+        }
+        public Genre(string line)
+        {
+            string[] split = line.Split('#');
+            GenreID = int.Parse(split[0]);
+            GenreName = split[1];
+        }
+
 
     }
 }

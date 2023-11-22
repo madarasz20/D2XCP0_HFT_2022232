@@ -25,7 +25,15 @@ namespace D2XCP0_HFT_2022232.Models
 
         public Author()
         {
-            Books = new HashSet<Book>();
+
         }
+        public Author(string line)
+        {
+            string[] split = line.Split('#');
+            AuthorID = int.Parse(split[0]);
+            AuthorName = split[1];
+            BirthDay = DateTime.Parse(split[2]);
+        }
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using D2XCP0_HFT_2022232.Models;
+﻿using D2XCP0_HFT_2022232.Logic;
+using D2XCP0_HFT_2022232.Models;
 using D2XCP0_HFT_2022232.Repository;
 using System;
 using System.Linq;
@@ -9,13 +10,12 @@ namespace D2XCP0_HFT_2022232.Client
     {
         static void Main(string[] args)
         {
-            IRepository<Author> repo = new AuthorRepository(new BookDbcontext());
+            var ctx = new BookDbcontext();
 
-            var items = repo.ReadAll().ToArray();
+            var bookrepo = new BookRepository(ctx);
 
-            ;
-            
-            
+            var logic = new BookLogic(bookrepo);
+
         }
     }
 }

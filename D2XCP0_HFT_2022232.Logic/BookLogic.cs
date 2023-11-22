@@ -126,6 +126,7 @@ namespace D2XCP0_HFT_2022232.Logic
                     Title = x.Title,
                     AuthorName = x.Author.AuthorName,
                     Genre = x.Genre.GenreName,
+                    Pages = x.Pages,
                     Rating = x.Rating,
                     Price = x.Price
 

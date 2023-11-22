@@ -1,15 +1,15 @@
-﻿using System;
-using D2XCP0_HFT_2022232.Models;
+﻿using D2XCP0_HFT_2022232.Models;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace D2XCP0_HFT_2022232.Repository
 {
-    public class BookDBcontext : DbContext
+    public class BookDbcontext : DbContext
     {
-        public DbSet<Book> Books { get; set;}
-        public DbSet<Author> Authors { get; set;}
-        public DbSet<Genre> Genres { get; set;}
-        public BookDBcontext()
+        public DbSet<Book> Books { get; set; }
+        public DbSet<Author> Authors { get; set; }
+        public DbSet<Genre> Genres { get; set; }
+        public BookDbcontext()
         {
             this.Database.EnsureCreated();
         }
@@ -17,9 +17,12 @@ namespace D2XCP0_HFT_2022232.Repository
         {
             if (!builder.IsConfigured)
             {
-               builder
-                .UseLazyLoadingProxies()
-                .UseInMemoryDatabase("book");
+                string conn =
+                    @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Book.mdf;Integrated Security=True;MultipleActiveResultSets=true";
+
+                builder
+                 .UseLazyLoadingProxies()
+                 .UseSqlServer(conn);
             }
 
         }
@@ -80,7 +83,7 @@ namespace D2XCP0_HFT_2022232.Repository
                 new Book("9#Oliver Twist#7#9#3800#4,6#100"),
                 new Book("10#1984#5#5#3790#4,0#241"),
                 new Book("11#The Adventures of Tom Sawyer#3#9#1045#4,0#187"),
-                new Book("12#Letters to Milena#9#4#1750#4,8#234") 
+                new Book("12#Letters to Milena#9#4#1750#4,8#234")
             });
         }
     }

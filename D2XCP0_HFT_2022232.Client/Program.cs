@@ -9,9 +9,10 @@ namespace D2XCP0_HFT_2022232.Client
     {
         static void Main(string[] args)
         {
+            BookDbcontext ctx = new BookDbcontext();
 
+            var a = ctx.Authors.ToArray();
 
-           
             ;
             
         }

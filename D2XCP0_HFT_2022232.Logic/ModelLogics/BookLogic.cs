@@ -69,7 +69,6 @@ namespace D2XCP0_HFT_2022232.Logic
             };
             return bf;
         }
-
         public IEnumerable<BookInfo> LongestTitleBookInfo()
         {
             BookInfo bf = repo
@@ -93,7 +92,6 @@ namespace D2XCP0_HFT_2022232.Logic
 
             return rtw;
         }
-
         public IEnumerable<BookInfo> MostExpensiveBookInfo()
         {
             BookInfo bf = repo
@@ -116,7 +114,6 @@ namespace D2XCP0_HFT_2022232.Logic
             };
             return rtw;
         }
-
         public IEnumerable<BookInfo> MostPagesInABookInfo()
         {
             BookInfo bf = repo
@@ -162,6 +159,8 @@ namespace D2XCP0_HFT_2022232.Logic
             };
             return bf;
         }
+
+        
     }
     public class BookInfo
     {

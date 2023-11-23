@@ -49,5 +49,72 @@ namespace D2XCP0_HFT_2022232.Logic
         {
             this.repo.Update(item);
         }
+
+        //Non-Cruds
+
+        public IEnumerable<AuthorInfo> YoungestAuthor()
+        {
+            AuthorInfo res = repo
+              .ReadAll()
+              .Select(x => new AuthorInfo
+              {
+                  AuthorID = x.AuthorID,
+                  AuthorName = x.AuthorName,
+                  Birthday = x.BirthDay,
+
+              })
+              .OrderBy(g => g.Age)
+              .FirstOrDefault();
+
+            IEnumerable<AuthorInfo> bf = new List<AuthorInfo>()
+            {
+                res
+            };
+            return bf;
+        }
+        public IEnumerable<AuthorInfo> OldestAuthor()
+        {
+            AuthorInfo res = repo
+              .ReadAll()
+              .Select(x => new AuthorInfo
+              {
+                  AuthorID = x.AuthorID,
+                  AuthorName = x.AuthorName,
+                  Birthday = x.BirthDay,
+
+              })
+              .OrderByDescending(g => g.Age)
+              .FirstOrDefault();
+
+            IEnumerable<AuthorInfo> bf = new List<AuthorInfo>()
+            {
+                res
+            };
+            return bf;
+        }
+        public int NumOfAuthors()
+        {
+            int num = repo .ReadAll().Count();
+            return num;
+        }
+
+
+
+
+    }
+    public class AuthorInfo
+    {
+        public int AuthorID { get; set; }
+        public string AuthorName { get; set; }
+        public DateTime Birthday { get; set; }
+        public int Age 
+        { 
+            get
+            {
+                DateTime today = DateTime.Today;
+                int age = today.Year - this.Birthday.Year;
+                return age;
+            }
+        }
     }
 }

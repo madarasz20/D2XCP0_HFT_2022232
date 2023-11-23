@@ -33,16 +33,25 @@ namespace D2XCP0_HFT_2022232.Client
             var bookSubSubMenu = new ConsoleMenu(args, level: 2)
                .Add("Show every Book", () => List("Book"))
                .Add("Show Book by ID", () => ListByID("Book"))
+               .Add("Best rated Book", () => BestRatedBookInfo())
+               .Add("Worst rated Book", () => WorstRatedBookInfo())
+               .Add("Longest title Book", ()=> LongestTitleBookInfo())
+               .Add("Most expensive Book", ()=> MostExpensiveBookInfo())
+               .Add("Most pages Book", ()=> MostPagesInABookInfo())
                .Add("Exit", ConsoleMenu.Close);
 
             var autSubSubMenu = new ConsoleMenu(args, level: 2)
                .Add("Show every Author", () => List("Author"))
                .Add("Show Author by ID", () => ListByID("Author"))
+               .Add("Youngest Author", () => YoungestAuthor())
+               .Add("Oldest Author", () => OldestAuthor())
+               .Add("Number Of Authors", () => NumOfAuthors())
                .Add("Exit", ConsoleMenu.Close);
 
             var genSubSubMenu = new ConsoleMenu(args, level: 2)
                .Add("Show every Genre", () => List("Genre"))
                .Add("Show Genre by ID", () => ListByID("Genre"))
+               .Add("Number Of Genres", () => NumOfGenres())
                .Add("Exit", ConsoleMenu.Close);
 
 
@@ -267,5 +276,101 @@ namespace D2XCP0_HFT_2022232.Client
                 genrelogic.Delete(id);
             }
         }
+
+        //NON-CRUDS
+
+        //Author
+        static void YoungestAuthor()
+        {
+            var youngest = authorlogic.YoungestAuthor().FirstOrDefault();
+            Console.WriteLine("Author's ID: " + youngest.AuthorID);
+            Console.WriteLine("Author's Name: " + youngest.AuthorName);
+            Console.WriteLine("Author's Age Today: " + youngest.Age);
+            Console.ReadLine();
+            
+        }
+        static void OldestAuthor()
+        {
+            var oldest = authorlogic.OldestAuthor().FirstOrDefault();
+            Console.WriteLine("Author's ID: " + oldest.AuthorID);
+            Console.WriteLine("Author's Name: " + oldest.AuthorName);
+            Console.WriteLine("Author's Age Today: " + oldest.Age);
+            Console.ReadLine();
+
+        }
+        static void NumOfAuthors()
+        {
+            var rtw = authorlogic.NumOfAuthors();
+            Console.WriteLine($"{rtw} authors are registered in the database");
+            Console.ReadLine() ;
+        }
+
+        //Book
+        static void BestRatedBookInfo()
+        {
+            var book = booklogic.BestRatedBookInfo();
+            foreach (var item in book)
+            {
+                Console.WriteLine("Title: " + item.Title);
+                Console.WriteLine("Rating: " + item.Rating);
+                Console.ReadLine() ;
+            }
+            
+        }
+        static void LongestTitleBookInfo()
+        {
+            var book = booklogic.LongestTitleBookInfo();
+            foreach (var item in book)
+            {
+                Console.WriteLine("Title: " + item.Title);
+                Console.WriteLine("Length of title: " + item.Title.Length);
+                Console.ReadLine();
+            }
+
+        }
+        static void MostExpensiveBookInfo()
+        {
+            var book = booklogic.MostExpensiveBookInfo();
+            foreach (var item in book)
+            {
+                Console.WriteLine("Title: " + item.Title);
+                Console.WriteLine("Price: " + item.Price);
+                Console.ReadLine();
+            }
+
+        }
+        static void MostPagesInABookInfo()
+        {
+            var book = booklogic.MostPagesInABookInfo();
+            foreach (var item in book)
+            {
+                Console.WriteLine("Title: " + item.Title);
+                Console.WriteLine("Number of pages: " + item.Pages);
+                Console.ReadLine();
+            }
+
+        }
+        static void WorstRatedBookInfo()
+        {
+            var book = booklogic.WorstRatedBookInfo();
+            foreach (var item in book)
+            {
+                Console.WriteLine("Title: " + item.Title);
+                Console.WriteLine("Rating: " + item.Rating);
+                Console.ReadLine();
+            }
+
+        }
+
+
+        //Genre
+        static void NumOfGenres()
+        {
+            var rtw = genrelogic.NumOfGenres();
+            Console.WriteLine($"{rtw} genres are registered in the database");
+            Console.ReadLine();
+        }
+
+
     }
 }

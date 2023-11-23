@@ -44,5 +44,12 @@ namespace D2XCP0_HFT_2022232.Logic
         {
             this.repo.Update(item);
         }
+
+        //Non - Cruds
+        public int NumOfGenres()
+        {
+            int num = repo.ReadAll().Count();
+            return num;
+        }
     }
 }

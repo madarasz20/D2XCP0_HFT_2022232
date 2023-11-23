@@ -7,6 +7,7 @@ namespace D2XCP0_HFT_2022232.Logic
     {
         void Create(Genre item);
         void Delete(int id);
+        int NumOfGenres();
         Genre Read(int id);
         IQueryable<Genre> ReadAll();
         void Update(Genre item);

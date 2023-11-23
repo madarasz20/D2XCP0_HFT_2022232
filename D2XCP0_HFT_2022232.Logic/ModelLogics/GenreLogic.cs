@@ -19,7 +19,7 @@ namespace D2XCP0_HFT_2022232.Logic
 
         public void Create(Genre item)
         {
-            if (item.GenreName.Length > 0)
+            if (item.GenreName.Length > 2)
                 repo.Create(item);
             else
                 throw new ArgumentException("Invalid genre name");

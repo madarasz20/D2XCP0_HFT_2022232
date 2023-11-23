@@ -19,7 +19,7 @@ namespace D2XCP0_HFT_2022232.Logic
 
         public void Create(Author item)
         {
-            if (item.AuthorName.Length > 0)
+            if (item.AuthorName.Length > 2)
             {
                 this.repo.Create(item);
             }
@@ -66,7 +66,7 @@ namespace D2XCP0_HFT_2022232.Logic
               .OrderBy(g => g.Age)
               .FirstOrDefault();
 
-            
+
             return res;
         }
         public AuthorInfo OldestAuthor()
@@ -83,12 +83,12 @@ namespace D2XCP0_HFT_2022232.Logic
               .OrderByDescending(g => g.Age)
               .FirstOrDefault();
 
-            
+
             return res;
         }
         public int NumOfAuthors()
         {
-            int num = repo .ReadAll().Count();
+            int num = repo.ReadAll().Count();
             return num;
         }
 

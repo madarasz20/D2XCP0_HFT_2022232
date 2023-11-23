@@ -16,5 +16,6 @@ namespace D2XCP0_HFT_2022232.Logic
         IQueryable<Book> ReadAll();
         void Update(Book item);
         Book WorstRatedBookInfo();
+        int HighestRate();
     }
 }

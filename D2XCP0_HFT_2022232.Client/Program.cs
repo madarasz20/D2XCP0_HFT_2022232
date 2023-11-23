@@ -2,6 +2,7 @@
 using D2XCP0_HFT_2022232.Logic;
 using D2XCP0_HFT_2022232.Models;
 using D2XCP0_HFT_2022232.Repository;
+using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -247,8 +248,24 @@ namespace D2XCP0_HFT_2022232.Client
         }
         static void Delete(string entity)
         {
-            Console.WriteLine(entity + "delete");
-            Console.WriteLine();
+            if (entity == "Book")
+            {
+                Console.WriteLine("Enter deletable Book's ID: ");
+                int id = int.Parse(Console.ReadLine()) ;
+                booklogic.Delete(id);
+            }
+            else if (entity == "Author")
+            {
+                Console.WriteLine("Enter deletable Author's ID: ");
+                int id = int.Parse(Console.ReadLine());
+                authorlogic.Delete(id);
+            }
+            else if (entity == "Genre")
+            {
+                Console.WriteLine("Enter deletable Genre's ID: ");
+                int id = int.Parse(Console.ReadLine());
+                genrelogic.Delete(id);
+            }
         }
     }
 }

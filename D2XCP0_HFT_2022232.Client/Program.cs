@@ -44,14 +44,14 @@ namespace D2XCP0_HFT_2022232.Client
                .Add("Show Genre by ID", () => ListByID("Genre"))
                .Add("Exit", ConsoleMenu.Close);
 
+
+
             var bookSubMenu = new ConsoleMenu(args, level: 1)
                 .Add("List", () => bookSubSubMenu.Show())
                 .Add("Create", () => Create("Book"))
                 .Add("Update", () => Update("Book"))
                 .Add("Delete", () => Delete("Book"))
                 .Add("Exit", ConsoleMenu.Close);
-
-
 
             var authorSubMenu = new ConsoleMenu(args, level: 1)
                 .Add("List", () => autSubSubMenu.Show())
@@ -60,13 +60,13 @@ namespace D2XCP0_HFT_2022232.Client
                 .Add("Delete", () => Delete("Author"))
                 .Add("Exit", ConsoleMenu.Close);
 
-
             var genreSubMenu = new ConsoleMenu(args, level: 1)
                 .Add("List", () => genSubSubMenu.Show())
                 .Add("Create", () => Create("Genre"))
                 .Add("Update", () => Update("Genre"))
                 .Add("Delete", () => Delete("Genre"))
                 .Add("Exit", ConsoleMenu.Close);
+
 
 
             var menu = new ConsoleMenu(args, level: 0)
@@ -119,7 +119,7 @@ namespace D2XCP0_HFT_2022232.Client
             }
             else if (entity == "Genre")
             {
-                Console.WriteLine("Enter gende ID: ");
+                Console.WriteLine("Enter genre ID: ");
                 string id = Console.ReadLine() ;
                 Console.WriteLine("Enter genre name: ");
                 string title = Console.ReadLine() ;
@@ -197,19 +197,52 @@ namespace D2XCP0_HFT_2022232.Client
                 int id = int.Parse(Console.ReadLine());
                 var old = authorlogic.Read(id);
 
-                Console.WriteLine("Enter Author name:");
+                Console.WriteLine($"Enter Author name [old name: {old.AuthorName}]:");
                 string name = Console.ReadLine();
-                
-                Console.WriteLine();
-                
-                Console.WriteLine("Enter Author's birthday [MM/DD/YYYY]:");
+                Console.WriteLine($"Enter Author's birthday [MM/DD/YYYY] [old Bday: {old.BirthDay}]:");
                 string date = Console.ReadLine();
                 
 
                 Console.WriteLine();
                 string line = $"{id}#{name}#{date}";
                 authorlogic.Update(new Author(line));
+            }
+            else if (entity == "Book")
+            {
+                Console.WriteLine("Enter updatable Book's ID : ");
+                int id = int.Parse(Console.ReadLine());
+                var old = booklogic.Read(id);
 
+
+                Console.WriteLine($"Enter Book Title [old title: {old.Title}]: ");
+                string title = Console.ReadLine();
+                Console.WriteLine($"Enter Author ID [old Author ID: {old.AuthorID}]: ");
+                string au = Console.ReadLine();
+                //if null create author
+                Console.WriteLine($"Enter Genre ID [old Genre ID: {old.GenreID}]: ");
+                string genre = Console.ReadLine();
+                //if null create genre
+                Console.WriteLine($"Enter Price [old price: {old.Price}]: ");
+                string price = Console.ReadLine();
+                Console.WriteLine($"Rating [old rating: {old.Rating}]: ");
+                string rating = Console.ReadLine();
+                Console.WriteLine($"Number of pages [old pages: {old.Pages}]: ");
+                string pages = Console.ReadLine();
+
+                string line = $"{id}#{title}#{au}#{genre}#{price}#{rating}#{pages}";
+                booklogic.Update(new Book(line));
+            }
+            else if (entity == "Genre")
+            {
+                Console.WriteLine("Enter updatable gende ID: ");
+                int id = int.Parse(Console.ReadLine());
+                var old = genrelogic.Read(id);
+
+                Console.WriteLine("Enter genre name: ");
+                string title = Console.ReadLine();
+
+                string line = $"{id}#{title}";
+                genrelogic.Update(new Genre(line));
             }
         }
         static void Delete(string entity)

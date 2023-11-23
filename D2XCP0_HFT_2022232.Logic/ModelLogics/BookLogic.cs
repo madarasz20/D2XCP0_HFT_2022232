@@ -92,7 +92,7 @@ namespace D2XCP0_HFT_2022232.Logic
 
             return rtw;
         }
-        public IEnumerable<BookInfo> MostExpensiveBookInfo()
+        public IEnumerable<BookInfo>MostExpensiveBookInfo()
         {
             BookInfo bf = repo
                 .ReadAll()
@@ -164,6 +164,10 @@ namespace D2XCP0_HFT_2022232.Logic
     }
     public class BookInfo
     {
+        public BookInfo()
+        {
+                
+        }
         public string Title { get; set; }
         public string AuthorName { get; set; }
         public string Genre { get; set; }
@@ -171,27 +175,28 @@ namespace D2XCP0_HFT_2022232.Logic
         public int Price { get; set; }
         public int Pages { get; set; }
 
-        //public override bool Equals(object obj)
-        //{
-        //    BookInfo b = obj as BookInfo;
-        //    if (b == null)
-        //    {
-        //        return false;
-        //    }
-        //    else
-        //    {
-        //        return this.Title == b.Title
-        //            && this.AuthorName == b.AuthorName
-        //            && this.Genre == b.Genre
-        //            && this.Rating == b.Rating
-        //            && this.Price == b.Price
-        //            && this.Pages == b.Pages;
-        //    }
-        //}
+        public override bool Equals(object obj)
+        {
+            BookInfo b = obj as BookInfo;
+            if (b == null)
+            {
+                return false;
+            }
+            else
+            {
+                return this.Title == b.Title
+                    && this.AuthorName == b.AuthorName
+                    && this.Genre == b.Genre
+                    && this.Rating == b.Rating
+                    && this.Price == b.Price
+                    && this.Pages == b.Pages;
+            }
+        }
 
-        //public override int GetHashCode()
-        //{
-        //    return HashCode.Combine(this.Title, this.AuthorName, this.Genre);
-        //}
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(this.Title, this.AuthorName, this.Genre, this.Rating, 
+                this.Price, this.Pages);
+        }
     }
 }

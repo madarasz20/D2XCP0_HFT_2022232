@@ -52,7 +52,7 @@ namespace D2XCP0_HFT_2022232.Logic
 
         //Non-Cruds
 
-        public IEnumerable<AuthorInfo> YoungestAuthor()
+        public AuthorInfo YoungestAuthor()
         {
             AuthorInfo res = repo
               .ReadAll()
@@ -66,11 +66,8 @@ namespace D2XCP0_HFT_2022232.Logic
               .OrderBy(g => g.Age)
               .FirstOrDefault();
 
-            IEnumerable<AuthorInfo> bf = new List<AuthorInfo>()
-            {
-                res
-            };
-            return bf;
+            
+            return res;
         }
         public IEnumerable<AuthorInfo> OldestAuthor()
         {
@@ -97,9 +94,6 @@ namespace D2XCP0_HFT_2022232.Logic
             int num = repo .ReadAll().Count();
             return num;
         }
-
-
-
 
     }
     public class AuthorInfo

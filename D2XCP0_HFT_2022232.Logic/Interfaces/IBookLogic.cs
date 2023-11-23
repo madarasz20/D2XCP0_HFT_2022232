@@ -6,15 +6,15 @@ namespace D2XCP0_HFT_2022232.Logic
 {
     public interface IBookLogic
     {
-        IEnumerable<BookInfo> BestRatedBookInfo();
+        Book BestRatedBookInfo();
         void Create(Book item);
         void Delete(int id);
-        IEnumerable<BookInfo> LongestTitleBookInfo();
-        IEnumerable<BookInfo> MostExpensiveBookInfo();
-        IEnumerable<BookInfo> MostPagesInABookInfo();
+        Book LongestTitleBookInfo();
+        Book MostExpensiveBookInfo();
+        Book MostPagesInABookInfo();
         Book Read(int id);
         IQueryable<Book> ReadAll();
         void Update(Book item);
-        IEnumerable<BookInfo> WorstRatedBookInfo();
+        Book WorstRatedBookInfo();
     }
 }

@@ -20,6 +20,7 @@ namespace D2XCP0_HFT_2022232.Client
 
         static void Main(string[] args)
         {
+            
             var ctx = new BookDbcontext();
 
             var bookrepo = new BookRepository(ctx);
@@ -282,7 +283,7 @@ namespace D2XCP0_HFT_2022232.Client
         //Author
         static void YoungestAuthor()
         {
-            var youngest = authorlogic.YoungestAuthor().FirstOrDefault();
+            var youngest = authorlogic.YoungestAuthor();
             Console.WriteLine("Author's ID: " + youngest.AuthorID);
             Console.WriteLine("Author's Name: " + youngest.AuthorName);
             Console.WriteLine("Author's Age Today: " + youngest.Age);
@@ -291,7 +292,7 @@ namespace D2XCP0_HFT_2022232.Client
         }
         static void OldestAuthor()
         {
-            var oldest = authorlogic.OldestAuthor().FirstOrDefault();
+            var oldest = authorlogic.OldestAuthor();
             Console.WriteLine("Author's ID: " + oldest.AuthorID);
             Console.WriteLine("Author's Name: " + oldest.AuthorName);
             Console.WriteLine("Author's Age Today: " + oldest.Age);
@@ -308,58 +309,45 @@ namespace D2XCP0_HFT_2022232.Client
         //Book
         static void BestRatedBookInfo()
         {
-            var book = booklogic.BestRatedBookInfo();
-            foreach (var item in book)
-            {
-                Console.WriteLine("Title: " + item.Title);
-                Console.WriteLine("Rating: " + item.Rating);
-                Console.ReadLine() ;
-            }
+            var item = booklogic.BestRatedBookInfo();
+            Console.WriteLine("Title: " + item.Title);
+            Console.WriteLine("Rating: " + item.Rating);
+            Console.ReadLine();
             
         }
         static void LongestTitleBookInfo()
         {
-            var book = booklogic.LongestTitleBookInfo();
-            foreach (var item in book)
-            {
-                Console.WriteLine("Title: " + item.Title);
-                Console.WriteLine("Length of title: " + item.Title.Length);
-                Console.ReadLine();
-            }
+            var item = booklogic.LongestTitleBookInfo();
+            Console.WriteLine("Title: " + item.Title);
+            Console.WriteLine("Length of title: " + item.Title.Length);
+            Console.ReadLine();
+            
 
         }
         static void MostExpensiveBookInfo()
         {
-            var book = booklogic.MostExpensiveBookInfo();
-            foreach (var item in book)
-            {
-                Console.WriteLine("Title: " + item.Title);
-                Console.WriteLine("Price: " + item.Price);
-                Console.ReadLine();
-            }
-
+            var item = booklogic.MostExpensiveBookInfo();
+            Console.WriteLine("Title: " + item.Title);
+            Console.WriteLine("Price: " + item.Price);
+            Console.ReadLine();
+            
         }
         static void MostPagesInABookInfo()
         {
-            var book = booklogic.MostPagesInABookInfo();
-            foreach (var item in book)
-            {
-                Console.WriteLine("Title: " + item.Title);
-                Console.WriteLine("Number of pages: " + item.Pages);
-                Console.ReadLine();
-            }
+            var item = booklogic.MostPagesInABookInfo();
+            Console.WriteLine("Title: " + item.Title);
+            Console.WriteLine("Number of pages: " + item.Pages);
+            Console.ReadLine();
+            
 
         }
         static void WorstRatedBookInfo()
         {
-            var book = booklogic.WorstRatedBookInfo();
-            foreach (var item in book)
-            {
-                Console.WriteLine("Title: " + item.Title);
-                Console.WriteLine("Rating: " + item.Rating);
-                Console.ReadLine();
-            }
-
+            var item = booklogic.WorstRatedBookInfo();
+            Console.WriteLine("Title: " + item.Title);
+            Console.WriteLine("Rating: " + item.Rating);
+            Console.ReadLine();
+           
         }
 
 

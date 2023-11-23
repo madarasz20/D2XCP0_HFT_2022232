@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -21,7 +22,7 @@ namespace D2XCP0_HFT_2022232.Models
         public int AuthorID { get; set; }    
         public int GenreID { get; set; }
         public int Price { get; set; }
-        public string Rating { get; set; }
+        public int Rating { get; set; }
         public int Pages { get; set; }
 
 
@@ -41,7 +42,8 @@ namespace D2XCP0_HFT_2022232.Models
             AuthorID = int.Parse(split[2]);
             GenreID = int.Parse(split[3]);
             Price = int.Parse(split[4]);
-            Rating = split[5];
+
+            Rating = int.Parse(split[5]);
             Pages = int.Parse(split[6]);
 
 

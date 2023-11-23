@@ -71,5 +71,14 @@ namespace D2XCP0_HFT_2022232.Test
 
             Assert.That(rtw, Is.EqualTo(58));
         }
+
+        [Test]
+        public void OldestTest()
+        {
+            var aa = logic.OldestAuthor();
+            int wau = aa.Age;
+
+            Assert.That(wau, Is.EqualTo(248));
+        }
     }
 }

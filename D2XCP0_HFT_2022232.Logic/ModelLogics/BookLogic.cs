@@ -47,117 +47,60 @@ namespace D2XCP0_HFT_2022232.Logic
         }
 
         //Non-CRUDS
-        public IEnumerable<BookInfo> BestRatedBookInfo()
+        public Book BestRatedBookInfo()
         {
-            BookInfo res = repo
+            Book a = this.repo
                 .ReadAll()
-                .Select(x => new BookInfo
-                {
-                    Title = x.Title,
-                    AuthorName = x.Author.AuthorName,
-                    Genre = x.Genre.GenreName,
-                    Rating = x.Rating,
-                    Price = x.Price
-
-                })
-                .OrderByDescending(g => g.Rating)
+                .OrderByDescending(t => t.Rating)
                 .FirstOrDefault();
 
-            IEnumerable<BookInfo> bf = new List<BookInfo>()
-            {
-                res
-            };
-            return bf;
-        }
-        public IEnumerable<BookInfo> LongestTitleBookInfo()
-        {
-            BookInfo bf = repo
-                .ReadAll()
-                .Select(x => new BookInfo
-                {
-                    Title = x.Title,
-                    AuthorName = x.Author.AuthorName,
-                    Genre = x.Genre.GenreName,
-                    Rating = x.Rating,
-                    Price = x.Price
+            return a;
 
-                })
+        }
+        public int HighestRate()
+        {
+            return this.repo.ReadAll().OrderByDescending(t => t.Rating).First().Rating;
+        }
+        public Book LongestTitleBookInfo()
+        {
+            Book bf = repo
+                .ReadAll()
                 .OrderByDescending(x => x.Title.Length)
                 .FirstOrDefault();
 
-            IEnumerable<BookInfo> rtw = new List<BookInfo>()
-            {
-                bf
-            };
+            
 
-            return rtw;
+            return bf;
         }
-        public IEnumerable<BookInfo>MostExpensiveBookInfo()
+        public Book MostExpensiveBookInfo()
         {
-            BookInfo bf = repo
+            Book bf = repo
                 .ReadAll()
-                .Select(x => new BookInfo
-                {
-                    Title = x.Title,
-                    AuthorName = x.Author.AuthorName,
-                    Genre = x.Genre.GenreName,
-                    Rating = x.Rating,
-                    Price = x.Price
-
-                })
                 .OrderByDescending(x => x.Price)
                 .FirstOrDefault();
 
-            IEnumerable<BookInfo> rtw = new List<BookInfo>()
-            {
-                bf
-            };
-            return rtw;
+            
+            return bf;
         }
-        public IEnumerable<BookInfo> MostPagesInABookInfo()
+        public Book MostPagesInABookInfo()
         {
-            BookInfo bf = repo
+            Book bf = repo
                 .ReadAll()
-                .Select(x => new BookInfo
-                {
-                    Title = x.Title,
-                    AuthorName = x.Author.AuthorName,
-                    Genre = x.Genre.GenreName,
-                    Pages = x.Pages,
-                    Rating = x.Rating,
-                    Price = x.Price
-
-                })
                 .OrderByDescending(x => x.Pages)
                 .FirstOrDefault();
 
-            IEnumerable<BookInfo> rtw = new List<BookInfo>()
-            {
-                bf
-            };
-            return rtw;
+            return bf;
         }
-        public IEnumerable<BookInfo> WorstRatedBookInfo()
+        public Book WorstRatedBookInfo()
         {
-            BookInfo res = repo
+            Book res = repo
                .ReadAll()
-               .Select(x => new BookInfo
-               {
-                   Title = x.Title,
-                   AuthorName = x.Author.AuthorName,
-                   Genre = x.Genre.GenreName,
-                   Rating = x.Rating,
-                   Price = x.Price
-
-               })
+               
                .OrderBy(g => g.Rating)
                .FirstOrDefault();
 
-            IEnumerable<BookInfo> bf = new List<BookInfo>()
-            {
-                res
-            };
-            return bf;
+           
+            return res;
         }
 
         
@@ -168,35 +111,36 @@ namespace D2XCP0_HFT_2022232.Logic
         {
                 
         }
+        public int BookID { get; set; }
         public string Title { get; set; }
-        public string AuthorName { get; set; }
-        public string Genre { get; set; }
-        public string Rating { get; set; }
+        public int AuthorID { get; set; }
+        public int GenreID { get; set; }
+        public int Rating { get; set; }
         public int Price { get; set; }
         public int Pages { get; set; }
 
-        public override bool Equals(object obj)
-        {
-            BookInfo b = obj as BookInfo;
-            if (b == null)
-            {
-                return false;
-            }
-            else
-            {
-                return this.Title == b.Title
-                    && this.AuthorName == b.AuthorName
-                    && this.Genre == b.Genre
-                    && this.Rating == b.Rating
-                    && this.Price == b.Price
-                    && this.Pages == b.Pages;
-            }
-        }
+        //public override bool Equals(object obj)
+        //{
+        //    BookInfo b = obj as BookInfo;
+        //    if (b == null)
+        //    {
+        //        return false;
+        //    }
+        //    else
+        //    {
+        //        return this.Title == b.Title
+        //            && this.AuthorName == b.AuthorName
+        //            && this.Genre == b.Genre
+        //            && this.Rating == b.Rating
+        //            && this.Price == b.Price
+        //            && this.Pages == b.Pages;
+        //    }
+        //}
 
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(this.Title, this.AuthorName, this.Genre, this.Rating, 
-                this.Price, this.Pages);
-        }
+        //public override int GetHashCode()
+        //{
+        //    return HashCode.Combine(this.Title, this.AuthorName, this.Genre, this.Rating, 
+        //        this.Price, this.Pages);
+        //}
     }
 }

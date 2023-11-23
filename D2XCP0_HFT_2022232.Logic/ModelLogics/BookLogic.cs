@@ -17,7 +17,7 @@ namespace D2XCP0_HFT_2022232.Logic
 
         public void Create(Book item)
         {
-            if (item.Title.Length <= 5)
+            if (item.Title.Length <= 2)
             {
                 throw new ArgumentException("Title too short..");
             }

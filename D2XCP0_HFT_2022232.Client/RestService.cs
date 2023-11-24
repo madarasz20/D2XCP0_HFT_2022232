@@ -103,17 +103,28 @@ namespace D2XCP0_HFT_2022232.Client
             return item;
         }
 
-        public void Post<T>(T item, string endpoint)
+        public async void Post<T>(T item, string endpoint)
         {
-            HttpResponseMessage response =
-                client.PostAsJsonAsync(endpoint, item).GetAwaiter().GetResult();
-
-            if (!response.IsSuccessStatusCode)
+            //Console.WriteLine("Before sending request");
+            try
             {
-                var error = response.Content.ReadAsAsync<RestExceptionInfo>().GetAwaiter().GetResult();
-                throw new ArgumentException(error.Msg);
+                HttpResponseMessage response = await
+                client.PostAsJsonAsync(endpoint, item);
+                //.GetAwaiter().GetResult();
+                if (!response.IsSuccessStatusCode)
+                {
+                    var error = response.Content.ReadAsAsync<RestExceptionInfo>().GetAwaiter().GetResult();
+                    throw new ArgumentException(error.Msg);
+                }
+                response.EnsureSuccessStatusCode();
             }
-            response.EnsureSuccessStatusCode();
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+            }
+            
+            //Console.WriteLine("After sending request");
+            
         }
 
         public void Delete(int id, string endpoint)

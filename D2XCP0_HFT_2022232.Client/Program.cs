@@ -36,9 +36,9 @@ namespace D2XCP0_HFT_2022232.Client
                .Add("Show Book by ID", () => ListByID("Book"))
                .Add("Best rated Book", () => BestRatedBookInfo())
                .Add("Worst rated Book", () => WorstRatedBookInfo())
-               .Add("Longest title Book", ()=> LongestTitleBookInfo())
-               .Add("Most expensive Book", ()=> MostExpensiveBookInfo())
-               .Add("Most pages Book", ()=> MostPagesInABookInfo())
+               .Add("Longest title Book", () => LongestTitleBookInfo())
+               .Add("Most expensive Book", () => MostExpensiveBookInfo())
+               .Add("Most pages Book", () => MostPagesInABookInfo())
                .Add("Exit", ConsoleMenu.Close);
 
             var autSubSubMenu = new ConsoleMenu(args, level: 2)
@@ -92,6 +92,7 @@ namespace D2XCP0_HFT_2022232.Client
         }
         static void Create(string entity)
         {
+            
             if (entity == "Author")
             {
                 Console.WriteLine("Enter Author name:");
@@ -103,8 +104,9 @@ namespace D2XCP0_HFT_2022232.Client
                 Console.WriteLine("Enter Author's birthday [MM/DD/YYYY]:");
                 string date = Console.ReadLine();
                 Console.WriteLine();
+                
                 string line = $"{id}#{name}#{date}";
-                rest.Post(new Author(line),"author");
+                rest.Post(new Author(line), "author");
             }
             else if (entity == "Book")
             {
@@ -120,7 +122,7 @@ namespace D2XCP0_HFT_2022232.Client
                 //if null create genre
                 Console.WriteLine("Enter Price [int]: ");
                 string price = Console.ReadLine();
-                Console.WriteLine("Rating [ex.: 4,5]: ");
+                Console.WriteLine("Rating [ex.: 45]: ");
                 string rating = Console.ReadLine();
                 Console.WriteLine("Number of pages: ");
                 string pages = Console.ReadLine();
@@ -177,14 +179,14 @@ namespace D2XCP0_HFT_2022232.Client
             int id = int.Parse(Console.ReadLine());
             if (entity == "Author")
             {
-                var item = rest.GetSingle<Author>("author");
+                var item = rest.Get<Author>(id, "author");
                 //var item = authorlogic.Read(id);
                 Console.WriteLine(item.AuthorID + "     " + item.AuthorName);
                 Console.WriteLine();
             }
             else if (entity == "Book")
             {
-                var item = rest.GetSingle<Book>("book");
+                var item = rest.Get<Book>(id, "book");
                 //var item = booklogic.Read(id);
                 Console.WriteLine(item.BookID + "     " + item.Title);
                 Console.WriteLine();
@@ -192,7 +194,7 @@ namespace D2XCP0_HFT_2022232.Client
             }
             else if (entity == "Genre")
             {
-                var item = rest.GetSingle<Genre>("genre");
+                var item = rest.Get<Genre>(id, "genre");
                 //var item = genrelogic.Read(id);
                 Console.WriteLine(item.GenreID + "     " + item.GenreName);
                 Console.WriteLine();
@@ -206,7 +208,7 @@ namespace D2XCP0_HFT_2022232.Client
             {
                 Console.WriteLine("Enter updatable author's ID: ");
                 int id = int.Parse(Console.ReadLine());
-                var old = rest.GetSingle<Author>("author");
+                var old = rest.Get<Author>(id, "author");
 
                 Console.WriteLine($"Enter Author name [old name: {old.AuthorName}]:");
                 string name = Console.ReadLine();
@@ -216,13 +218,13 @@ namespace D2XCP0_HFT_2022232.Client
 
                 Console.WriteLine();
                 string line = $"{id}#{name}#{date}";
-                rest.Post(new Author(line),"author");
+                rest.Put(new Author(line),"author");
             }
             else if (entity == "Book")
             {
                 Console.WriteLine("Enter updatable Book's ID : ");
                 int id = int.Parse(Console.ReadLine());
-                var old = rest.GetSingle<Book>("book");
+                var old = rest.Get<Book>(id, "book");
 
 
                 Console.WriteLine($"Enter Book Title [old title: {old.Title}]: ");
@@ -241,19 +243,19 @@ namespace D2XCP0_HFT_2022232.Client
                 string pages = Console.ReadLine();
 
                 string line = $"{id}#{title}#{au}#{genre}#{price}#{rating}#{pages}";
-                rest.Post(new Book(line),"book");
+                rest.Put(new Book(line),"book");
             }
             else if (entity == "Genre")
             {
                 Console.WriteLine("Enter updatable gende ID: ");
                 int id = int.Parse(Console.ReadLine());
-                var old = rest.GetSingle<Genre>("genre");
+                var old = rest.Get<Genre>(id, "genre");
 
                 Console.WriteLine("Enter genre name: ");
                 string title = Console.ReadLine();
 
                 string line = $"{id}#{title}";
-                rest.Post(new Genre(line),"genre");
+                rest.Put(new Genre(line),"genre");
             }
         }
         static void Delete(string entity)
@@ -280,84 +282,91 @@ namespace D2XCP0_HFT_2022232.Client
 
         //NON-CRUDS
 
-        ////Author
-        //static void YoungestAuthor()
-        //{
-        //    var youngest = rest.YoungestAuthor();
-        //    Console.WriteLine("Author's ID: " + youngest.AuthorID);
-        //    Console.WriteLine("Author's Name: " + youngest.AuthorName);
-        //    Console.WriteLine("Author's Age Today: " + youngest.Age);
-        //    Console.ReadLine();
-            
-        //}
-        //static void OldestAuthor()
-        //{
-        //    var oldest = authorlogic.OldestAuthor();
-        //    Console.WriteLine("Author's ID: " + oldest.AuthorID);
-        //    Console.WriteLine("Author's Name: " + oldest.AuthorName);
-        //    Console.WriteLine("Author's Age Today: " + oldest.Age);
-        //    Console.ReadLine();
+        //Author
+        static void YoungestAuthor()
+        {
 
-        //}
-        //static void NumOfAuthors()
-        //{
-        //    var rtw = authorlogic.NumOfAuthors();
-        //    Console.WriteLine($"{rtw} authors are registered in the database");
-        //    Console.ReadLine() ;
-        //}
+            //var youngest = rest.YoungestAuthor();
 
-        ////Book
-        //static void BestRatedBookInfo()
-        //{
-        //    var item = booklogic.BestRatedBookInfo();
-        //    Console.WriteLine("Title: " + item.Title);
-        //    Console.WriteLine("Rating: " + item.Rating);
-        //    Console.ReadLine();
-            
-        //}
-        //static void LongestTitleBookInfo()
-        //{
-        //    var item = booklogic.LongestTitleBookInfo();
-        //    Console.WriteLine("Title: " + item.Title);
-        //    Console.WriteLine("Length of title: " + item.Title.Length);
-        //    Console.ReadLine();
-            
+            Author youngest = rest.GetSingle<Author>("Stat/YoungestAuthor");
+            Console.WriteLine("Author's ID: " + youngest.AuthorID);
+            Console.WriteLine("Author's Name: " + youngest.AuthorName);
+            Console.WriteLine("Author's Age Today: " + youngest.Age);
+            Console.ReadLine();
 
-        //}
-        //static void MostExpensiveBookInfo()
-        //{
-        //    var item = booklogic.MostExpensiveBookInfo();
-        //    Console.WriteLine("Title: " + item.Title);
-        //    Console.WriteLine("Price: " + item.Price);
-        //    Console.ReadLine();
-            
-        //}
-        //static void MostPagesInABookInfo()
-        //{
-        //    var item = booklogic.MostPagesInABookInfo();
-        //    Console.WriteLine("Title: " + item.Title);
-        //    Console.WriteLine("Number of pages: " + item.Pages);
-        //    Console.ReadLine();
-            
+        }
+        static void OldestAuthor()
+        {
+            //var oldest = authorlogic.OldestAuthor();
+            Author oldest = rest.GetSingle<Author>("Stat/OldestAuthor");
+            Console.WriteLine("Author's ID: " + oldest.AuthorID);
+            Console.WriteLine("Author's Name: " + oldest.AuthorName);
+            Console.WriteLine("Author's Age Today: " + oldest.Age);
+            Console.ReadLine();
 
-        //}
-        //static void WorstRatedBookInfo()
-        //{
-        //    var item = booklogic.WorstRatedBookInfo();
-        //    Console.WriteLine("Title: " + item.Title);
-        //    Console.WriteLine("Rating: " + item.Rating);
-        //    Console.ReadLine();
-           
-        //}
+        }
+        static void NumOfAuthors()
+        {
+            //var rtw = authorlogic.NumOfAuthors();
+            int rtw = rest.GetSingle<int>("Stat/NumOfAuthors");
+            Console.WriteLine($"{rtw} authors are registered in the database");
+            Console.ReadLine();
+        }
+
+        //Book
+        static void BestRatedBookInfo()
+        {
+            Book item = rest.GetSingle<Book>("Stat/BestRatedBookInfo");
+            //var item = booklogic.BestRatedBookInfo();
+            Console.WriteLine("Title: " + item.Title);
+            Console.WriteLine("Rating: " + item.Rating);
+            Console.ReadLine();
+
+        }
+        static void LongestTitleBookInfo()
+        {
+            //var item = booklogic.LongestTitleBookInfo();
+            Book item = rest.GetSingle<Book>("Stat/LongestTitleBookInfo");
+            Console.WriteLine("Title: " + item.Title);
+            Console.WriteLine("Length of title: " + item.Title.Length);
+            Console.ReadLine();
 
 
-        ////Genre
-        //static void NumOfGenres()
-        //{
-        //    var rtw = genrelogic.NumOfGenres();
-        //    Console.WriteLine($"{rtw} genres are registered in the database");
-        //    Console.ReadLine();
-        //}
+        }
+        static void MostExpensiveBookInfo()
+        {
+            Book item = rest.GetSingle<Book>("Stat/MostExpensiveBookInfo");
+            Console.WriteLine("Title: " + item.Title);
+            Console.WriteLine("Price: " + item.Price);
+            Console.ReadLine();
+
+        }
+        static void MostPagesInABookInfo()
+        {
+            Book item = rest.GetSingle<Book>("Stat/MostPagesInABookInfo");
+            Console.WriteLine("Title: " + item.Title);
+            Console.WriteLine("Number of pages: " + item.Pages);
+            Console.ReadLine();
+
+
+        }
+        static void WorstRatedBookInfo()
+        {
+            Book item = rest.GetSingle<Book>("Stat/WorstRatedBookInfo");
+            Console.WriteLine("Title: " + item.Title);
+            Console.WriteLine("Rating: " + item.Rating);
+            Console.ReadLine();
+
+        }
+
+
+        //Genre
+        static void NumOfGenres()
+        {
+            int rtw = rest.GetSingle<int>("Stat/NumOfGenres");
+            Console.WriteLine($"{rtw} genres are registered in the database");
+            Console.ReadLine();
+        }
 
 
     }

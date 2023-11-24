@@ -31,12 +31,12 @@ namespace D2XCP0_HFT_2022232.Endpoint.Controllers
 
         //Author
         [HttpGet]
-        public AuthorInfo YoungestAuthor()
+        public Author YoungestAuthor()
         {
             return this.authorlogic.YoungestAuthor();
         }
         [HttpGet]
-        public AuthorInfo OldestAuthor()
+        public Author OldestAuthor()
         {
             return this.authorlogic.OldestAuthor();
         }

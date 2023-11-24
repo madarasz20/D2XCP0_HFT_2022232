@@ -19,6 +19,15 @@ namespace D2XCP0_HFT_2022232.Models
         public string AuthorName { get; set; }
         public DateTime BirthDay { get; set; }
 
+        public int Age
+        {
+            get
+            {
+                DateTime today = DateTime.Today;
+                int age = today.Year - this.BirthDay.Year;
+                return age;
+            }
+        }
         //Navigational property
         [JsonIgnore]
         public virtual ICollection<Book> Books { get; set; }
@@ -32,7 +41,9 @@ namespace D2XCP0_HFT_2022232.Models
             string[] split = line.Split('#');
             AuthorID = int.Parse(split[0]);
             AuthorName = split[1];
-            BirthDay = DateTime.Parse(split[2]);
+
+            string format = "MM/dd/yyyy";
+            BirthDay = DateTime.ParseExact(split[2], format, System.Globalization.CultureInfo.InvariantCulture);
         }
 
     }

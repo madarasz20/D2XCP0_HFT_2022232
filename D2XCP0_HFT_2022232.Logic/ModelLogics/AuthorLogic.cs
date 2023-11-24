@@ -52,15 +52,15 @@ namespace D2XCP0_HFT_2022232.Logic
 
         //Non-Cruds
 
-        public AuthorInfo YoungestAuthor()
+        public Author YoungestAuthor()
         {
-            AuthorInfo res = repo
+            Author res = repo
               .ReadAll()
-              .Select(x => new AuthorInfo
+              .Select(x => new Author
               {
                   AuthorID = x.AuthorID,
                   AuthorName = x.AuthorName,
-                  Birthday = x.BirthDay,
+                  BirthDay = x.BirthDay,
 
               })
               .OrderBy(g => g.Age)
@@ -69,15 +69,15 @@ namespace D2XCP0_HFT_2022232.Logic
 
             return res;
         }
-        public AuthorInfo OldestAuthor()
+        public Author OldestAuthor()
         {
-            AuthorInfo res = repo
+            Author res = repo
               .ReadAll()
-              .Select(x => new AuthorInfo
+              .Select(x => new Author
               {
                   AuthorID = x.AuthorID,
                   AuthorName = x.AuthorName,
-                  Birthday = x.BirthDay,
+                  BirthDay = x.BirthDay,
 
               })
               .OrderByDescending(g => g.Age)
@@ -93,19 +93,19 @@ namespace D2XCP0_HFT_2022232.Logic
         }
 
     }
-    public class AuthorInfo
-    {
-        public int AuthorID { get; set; }
-        public string AuthorName { get; set; }
-        public DateTime Birthday { get; set; }
-        public int Age 
-        { 
-            get
-            {
-                DateTime today = DateTime.Today;
-                int age = today.Year - this.Birthday.Year;
-                return age;
-            }
-        }
-    }
+    //public class AuthorInfo
+    //{
+    //    public int AuthorID { get; set; }
+    //    public string AuthorName { get; set; }
+    //    public DateTime Birthday { get; set; }
+    //    public int Age 
+    //    { 
+    //        get
+    //        {
+    //            DateTime today = DateTime.Today;
+    //            int age = today.Year - this.Birthday.Year;
+    //            return age;
+    //        }
+    //    }
+    //}
 }

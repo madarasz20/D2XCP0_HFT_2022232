@@ -36,6 +36,7 @@ namespace D2XCP0_HFT_2022232.Test
                 new Book("2#Pride and Prejudice#2#1#4265#100#200"),
                 new Book("3#The Adventures of Huckleberry Finn#3#8#2350#85#256"),
                 new Book("4#Metamorphosis#9#6#1435#87#270"),
+                new Book("13#The Running Grave#1#6#3200#85#190"),
             }.AsQueryable();
         }
 
@@ -98,5 +99,39 @@ namespace D2XCP0_HFT_2022232.Test
             Assert.That(a.Title, Is.EqualTo("The Adventures of Huckleberry Finn"));
 
         }
+        [Test]
+        public void GenreNamesAndCount()
+        {
+            var result = logic.MostFreqGenre();
+            var expected = new NameAndCount()
+            {
+                Id = 6,
+                Count = 2
+            };
+            //var expected = new List<NameAndCount>()
+            //{
+
+            //    new NameAndCount()
+            //    {
+            //        Id = 9,
+            //        Count = 1
+            //    },
+            //    new NameAndCount()
+            //    {
+            //    Id = 1,
+            //    Count = 1
+            //    },
+            //    new NameAndCount()
+            //    {
+            //    Id = 8,
+            //    Count = 1
+            //    },
+
+            //};
+
+            Assert.AreEqual(expected, result);
+        }
+        
+        
     }
 }

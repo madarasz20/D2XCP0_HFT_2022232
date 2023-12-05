@@ -81,7 +81,8 @@ namespace D2XCP0_HFT_2022232.Repository
                 new Book("9#Oliver Twist#7#9#3800#67#100"),
                 new Book("10#1984#5#5#3790#80#241"),
                 new Book("11#The Adventures of Tom Sawyer#3#9#1045#81#187"),
-                new Book("12#Letters to Milena#9#4#1750#90#234")
+                new Book("12#Letters to Milena#9#4#1750#90#234"),
+                new Book("13#The Running Grave#1#6#3200#85#190")
             });
         }
     }

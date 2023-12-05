@@ -1,5 +1,7 @@
 ﻿using ConsoleTools;
+using D2XCP0_HFT_2022232.Logic;
 using D2XCP0_HFT_2022232.Models;
+using D2XCP0_HFT_2022232.Repository;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -29,7 +31,9 @@ namespace D2XCP0_HFT_2022232.Client
             //authorlogic = new AuthorLogic(authorrepo);
             //genrelogic = new GenreLogic(genrerepo);
 
-            rest = new RestService("http://localhost:20300/","book");
+
+
+            rest = new RestService("http://localhost:20300/", "book");
 
             var bookSubSubMenu = new ConsoleMenu(args, level: 2)
                .Add("Show every Book", () => List("Book"))
@@ -53,6 +57,7 @@ namespace D2XCP0_HFT_2022232.Client
                .Add("Show every Genre", () => List("Genre"))
                .Add("Show Genre by ID", () => ListByID("Genre"))
                .Add("Number Of Genres", () => NumOfGenres())
+               .Add("Most frequent Genre", () => MostFreqGen())
                .Add("Exit", ConsoleMenu.Close);
 
 
@@ -358,6 +363,7 @@ namespace D2XCP0_HFT_2022232.Client
             Console.ReadLine();
 
         }
+        
 
 
         //Genre
@@ -367,7 +373,23 @@ namespace D2XCP0_HFT_2022232.Client
             Console.WriteLine($"{rtw} genres are registered in the database");
             Console.ReadLine();
         }
+        static void MostFreqGen()
+        {
+            NameAndCount nameandcount = rest.GetSingle<NameAndCount>("Stat/MostFreqGenre");
+            List<Genre> genres = rest.Get<Genre>("genre");
+            Genre rtw = new Genre();
+            foreach (Genre genre in genres)
+            {
+                if (genre.GenreID == nameandcount.Id)
+                {
+                    rtw = genre;
+                }
+            }
+            Console.WriteLine("The most frequent genre in the database is:");
+            Console.WriteLine($"{rtw.GenreName}'\t'Count:{nameandcount.Count}");
+            Console.ReadLine();
 
+        }
 
     }
 }

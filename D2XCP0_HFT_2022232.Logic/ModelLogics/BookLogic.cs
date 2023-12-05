@@ -9,6 +9,7 @@ namespace D2XCP0_HFT_2022232.Logic
     public class BookLogic : IBookLogic
     {
         IRepository<Book> repo;
+        IRepository<Author> authorRepo;
 
         public BookLogic(IRepository<Book> repo)
         {
@@ -102,8 +103,35 @@ namespace D2XCP0_HFT_2022232.Logic
            
             return res;
         }
+        public NameAndCount MostFreqGenre()
+        {
+            var a = this.repo.ReadAll()
+                .GroupBy(t => t.GenreID)
+                .Select(g => new NameAndCount()
+                {
+                    Id = g.Key,
+                    Count = g.Count()
+                })
+                .OrderByDescending(t => t.Count)
+                .FirstOrDefault();
 
+            return a;
+        }
+        //public void BookStatistics()
+        //{
+        //    var rtw = from r in this.repo.ReadAll()
+        //              select new
+        //              {
+        //                  book_name = r.Title,
+        //                  author_name = r.Author.AuthorName,
+        //                  genre_name = r.Genre.GenreName
+        //              };
+                      
+
+        //}
+       
         
+
     }
     public class BookInfo
     {
@@ -142,5 +170,32 @@ namespace D2XCP0_HFT_2022232.Logic
         //    return HashCode.Combine(this.Title, this.AuthorName, this.Genre, this.Rating, 
         //        this.Price, this.Pages);
         //}
+    }
+    public class NameAndCount
+    {
+        public NameAndCount()
+        {
+            
+        }
+        public int Id { get; set; }
+        public int Count { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            NameAndCount b = obj as NameAndCount;
+            if (b == null)
+            {
+                return false;
+            }
+            else
+            {
+                return this.Id == b.Id 
+                    && this.Count == b.Count;
+            }
+        }
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(this.Id, this.Count);
+        }
     }
 }

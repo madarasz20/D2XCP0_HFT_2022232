@@ -78,5 +78,10 @@ namespace D2XCP0_HFT_2022232.Endpoint.Controllers
         {
             return this.booklogic.MostPagesInABookInfo();
         }
+        [HttpGet]
+        public NameAndCount MostFreqGenre()
+        {
+            return this.booklogic.MostFreqGenre();
+        }
     }
 }

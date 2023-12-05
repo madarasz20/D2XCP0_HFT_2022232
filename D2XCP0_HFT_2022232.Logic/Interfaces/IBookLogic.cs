@@ -17,5 +17,7 @@ namespace D2XCP0_HFT_2022232.Logic
         void Update(Book item);
         Book WorstRatedBookInfo();
         int HighestRate();
+
+        NameAndCount MostFreqGenre();
     }
 }

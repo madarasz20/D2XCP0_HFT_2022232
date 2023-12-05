@@ -117,19 +117,7 @@ namespace D2XCP0_HFT_2022232.Logic
 
             return a;
         }
-        //public void BookStatistics()
-        //{
-        //    var rtw = from r in this.repo.ReadAll()
-        //              select new
-        //              {
-        //                  book_name = r.Title,
-        //                  author_name = r.Author.AuthorName,
-        //                  genre_name = r.Genre.GenreName
-        //              };
-                      
-
-        //}
-       
+        
         
 
     }

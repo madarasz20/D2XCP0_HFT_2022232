@@ -375,18 +375,11 @@ namespace D2XCP0_HFT_2022232.Client
         }
         static void MostFreqGen()
         {
-            NameAndCount nameandcount = rest.GetSingle<NameAndCount>("Stat/MostFreqGenre");
-            List<Genre> genres = rest.Get<Genre>("genre");
-            Genre rtw = new Genre();
-            foreach (Genre genre in genres)
-            {
-                if (genre.GenreID == nameandcount.Id)
-                {
-                    rtw = genre;
-                }
-            }
+            
+            string rtw = rest.GetSingle<string>("Stat/MostFreqGenre");
+            string[] split = rtw.Split('#');
             Console.WriteLine("The most frequent genre in the database is:");
-            Console.WriteLine($"{rtw.GenreName}'\t'Count:{nameandcount.Count}");
+            Console.WriteLine($"{split[0]}'\t'Count:{split[1]}");
             Console.ReadLine();
 
         }

@@ -2,6 +2,7 @@
 using D2XCP0_HFT_2022232.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Linq;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -26,6 +27,23 @@ namespace D2XCP0_HFT_2022232.Endpoint.Controllers
         public int NumOfGenres()
         {
             return this.genrelogic.NumOfGenres();
+        }
+        [HttpGet]
+        public string MostFreqGenre()
+        {
+
+            //return this.booklogic.MostFreqGenre();
+            NameAndCount nameandcount = this.booklogic.MostFreqGenre();
+            List<Genre> genres = this.genrelogic.ReadAll().ToList();
+            Genre rtw = new Genre();
+            foreach (Genre genre in genres)
+            {
+                if (genre.GenreID == nameandcount.Id)
+                {
+                    rtw = genre;
+                }
+            }
+            return rtw.GenreName + "#" + nameandcount.Count;
         }
 
 
@@ -78,10 +96,6 @@ namespace D2XCP0_HFT_2022232.Endpoint.Controllers
         {
             return this.booklogic.MostPagesInABookInfo();
         }
-        [HttpGet]
-        public NameAndCount MostFreqGenre()
-        {
-            return this.booklogic.MostFreqGenre();
-        }
+        
     }
 }

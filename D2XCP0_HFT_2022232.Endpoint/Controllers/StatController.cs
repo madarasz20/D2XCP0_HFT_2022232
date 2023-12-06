@@ -99,6 +99,11 @@ namespace D2XCP0_HFT_2022232.Endpoint.Controllers
         {
             return this.booklogic.BooksInGenre(genreid);
         }
+        [HttpGet]
+        public IEnumerable<Book> BooksbyAuthor(int authorid)
+        {
+            return this.booklogic.BooksbyAuthor(authorid);
+        }
         
         
     }

@@ -123,6 +123,17 @@ namespace D2XCP0_HFT_2022232.Test
             };
             Assert.AreEqual(expected, result);
         }
+        [Test]
+        public void BooksbyAuthorTest()
+        {
+            var result = logic.BooksbyAuthor(1);
+            var expected = new List<Book>()
+            {
+                new Book("1#Harry Potter and the Sorcerer's Stone#1#9#3300#93#400"),
+                new Book("13#The Running Grave#1#6#3200#85#190")
+            };
+            Assert.AreEqual(expected, result);
+        }
         
         
     }

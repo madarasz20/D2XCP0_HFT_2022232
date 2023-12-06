@@ -44,6 +44,7 @@ namespace D2XCP0_HFT_2022232.Client
                .Add("Most expensive Book", () => MostExpensiveBookInfo())
                .Add("Most pages Book", () => MostPagesInABookInfo())
                .Add("Books in a specific genre", () => BooksInGenre())
+               .Add("Books by a specific author", () => BooksbyAuthor())
                .Add("Exit", ConsoleMenu.Close);
 
             var autSubSubMenu = new ConsoleMenu(args, level: 2)
@@ -376,6 +377,23 @@ namespace D2XCP0_HFT_2022232.Client
             List<Book> books = rest.Get<Book>("Stat/BooksInGenre");
             
             Console.WriteLine("Books in " + g.GenreName + ":");
+
+
+            foreach (var item in books)
+            {
+                Console.WriteLine(item.Title);
+            }
+            Console.ReadLine();
+        }
+        static void BooksbyAuthor()
+        {
+            Console.WriteLine("Enter the ID of the author: ");
+            int authorid = int.Parse(Console.ReadLine());
+            var a = rest.Get<Author>(authorid, "Author");
+
+            List<Book> books = rest.Get<Book>("Stat/BooksbyAuthor");
+
+            Console.WriteLine("Books by " + a.AuthorName + ":");
 
 
             foreach (var item in books)

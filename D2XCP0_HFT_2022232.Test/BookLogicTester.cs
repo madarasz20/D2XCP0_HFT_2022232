@@ -108,27 +108,19 @@ namespace D2XCP0_HFT_2022232.Test
                 Id = 6,
                 Count = 2
             };
-            //var expected = new List<NameAndCount>()
-            //{
+            
 
-            //    new NameAndCount()
-            //    {
-            //        Id = 9,
-            //        Count = 1
-            //    },
-            //    new NameAndCount()
-            //    {
-            //    Id = 1,
-            //    Count = 1
-            //    },
-            //    new NameAndCount()
-            //    {
-            //    Id = 8,
-            //    Count = 1
-            //    },
+            Assert.AreEqual(expected, result);
+        }
+        [Test]
+        public void BooksInGenreTest()
+        {
+            var result = logic.BooksInGenre(1);
+            var expected = new List<Book>()
+            {
+                new Book("2#Pride and Prejudice#2#1#4265#100#200")
 
-            //};
-
+            };
             Assert.AreEqual(expected, result);
         }
         

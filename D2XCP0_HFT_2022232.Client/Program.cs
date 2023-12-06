@@ -43,6 +43,7 @@ namespace D2XCP0_HFT_2022232.Client
                .Add("Longest title Book", () => LongestTitleBookInfo())
                .Add("Most expensive Book", () => MostExpensiveBookInfo())
                .Add("Most pages Book", () => MostPagesInABookInfo())
+               .Add("Books in a specific genre", () => BooksInGenre())
                .Add("Exit", ConsoleMenu.Close);
 
             var autSubSubMenu = new ConsoleMenu(args, level: 2)
@@ -362,6 +363,26 @@ namespace D2XCP0_HFT_2022232.Client
             Console.WriteLine("Rating: " + item.Rating);
             Console.ReadLine();
 
+        }
+
+        static void BooksInGenre()
+        {
+
+
+            Console.WriteLine("Enter the ID of the genre: ");
+            int genreid = int.Parse(Console.ReadLine());
+            var g = rest.Get<Genre>(genreid, "genre");
+
+            List<Book> books = rest.Get<Book>("Stat/BooksInGenre");
+            
+            Console.WriteLine("Books in " + g.GenreName + ":");
+
+
+            foreach (var item in books)
+            {
+                Console.WriteLine(item.Title);
+            }
+            Console.ReadLine();
         }
         
 

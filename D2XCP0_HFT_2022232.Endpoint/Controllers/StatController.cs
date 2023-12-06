@@ -31,8 +31,6 @@ namespace D2XCP0_HFT_2022232.Endpoint.Controllers
         [HttpGet]
         public string MostFreqGenre()
         {
-
-            //return this.booklogic.MostFreqGenre();
             NameAndCount nameandcount = this.booklogic.MostFreqGenre();
             List<Genre> genres = this.genrelogic.ReadAll().ToList();
             Genre rtw = new Genre();
@@ -43,7 +41,7 @@ namespace D2XCP0_HFT_2022232.Endpoint.Controllers
                     rtw = genre;
                 }
             }
-            return rtw.GenreName + "#" + nameandcount.Count;
+            return rtw.GenreName + "#" + nameandcount.Count.ToString();
         }
 
 
@@ -96,6 +94,12 @@ namespace D2XCP0_HFT_2022232.Endpoint.Controllers
         {
             return this.booklogic.MostPagesInABookInfo();
         }
+        [HttpGet]
+        public IEnumerable<Book> BooksInGenre(int genreid)
+        {
+            return this.booklogic.BooksInGenre(genreid);
+        }
+        
         
     }
 }

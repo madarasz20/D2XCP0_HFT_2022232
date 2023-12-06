@@ -49,6 +49,25 @@ namespace D2XCP0_HFT_2022232.Models
 
         }
 
+        public override bool Equals(object obj)
+        {
+            Book a = obj as Book;
+            if (a == null)
+            {
+                return false;
+            }
+            else
+            {
+                return this.BookID == a.BookID && this.Title == a.Title && this.AuthorID == a.AuthorID
+                    && this.GenreID == a.GenreID && this.Price == a.Price && this.Rating == a.Rating
+                    && this.Pages == a.Pages;
+            }
+        }
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(this.BookID, this.Title, this.AuthorID, this.GenreID
+                , this.Price, this.Rating);
+        }
 
     }
 }

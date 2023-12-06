@@ -9,7 +9,7 @@ namespace D2XCP0_HFT_2022232.Logic
     public class BookLogic : IBookLogic
     {
         IRepository<Book> repo;
-        IRepository<Author> authorRepo;
+        //IRepository<Author> authorRepo;
 
         public BookLogic(IRepository<Book> repo)
         {
@@ -116,6 +116,12 @@ namespace D2XCP0_HFT_2022232.Logic
                 .FirstOrDefault();
 
             return a;
+
+        }
+        public IEnumerable<Book> BooksInGenre(int genreid)
+        {
+            var rtw = repo.ReadAll().Where(t => t.GenreID == genreid).ToList();
+            return rtw;
         }
         
         

@@ -19,5 +19,6 @@ namespace D2XCP0_HFT_2022232.Logic
         int HighestRate();
 
         NameAndCount MostFreqGenre();
+        public IEnumerable<Book> BooksInGenre(int genreid);
     }
 }

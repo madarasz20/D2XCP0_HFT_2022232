@@ -110,7 +110,6 @@ namespace D2XCP0_HFT_2022232.Client
             {
                 HttpResponseMessage response = await
                 client.PostAsJsonAsync(endpoint, item);
-                //.GetAwaiter().GetResult();
                 if (!response.IsSuccessStatusCode)
                 {
                     var error = response.Content.ReadAsAsync<RestExceptionInfo>().GetAwaiter().GetResult();
@@ -120,10 +119,9 @@ namespace D2XCP0_HFT_2022232.Client
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred: {ex.Message}");
+                
             }
             
-            //Console.WriteLine("After sending request");
             
         }
 

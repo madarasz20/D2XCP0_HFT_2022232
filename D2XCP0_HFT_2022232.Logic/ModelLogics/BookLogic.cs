@@ -10,12 +10,10 @@ namespace D2XCP0_HFT_2022232.Logic
     public class BookLogic : IBookLogic
     {
         IRepository<Book> repo;
-        IRepository<Author> authorRepo;
 
-        public BookLogic(IRepository<Book> repo, IRepository<Author> au)
+        public BookLogic(IRepository<Book> repo)
         {
             this.repo = repo;
-            this.authorRepo = au;
         }
 
         public void Create(Book item)

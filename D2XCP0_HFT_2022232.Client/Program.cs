@@ -1,7 +1,5 @@
 ﻿using ConsoleTools;
-using D2XCP0_HFT_2022232.Logic;
 using D2XCP0_HFT_2022232.Models;
-using D2XCP0_HFT_2022232.Repository;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -14,25 +12,9 @@ namespace D2XCP0_HFT_2022232.Client
     internal class Program
     {
         static RestService rest;
-        //static AuthorLogic authorlogic;
-        //static BookLogic booklogic;
-        //static GenreLogic genrelogic;
 
         static void Main(string[] args)
         {
-
-            //var ctx = new BookDbcontext();
-
-            //var bookrepo = new BookRepository(ctx);
-            //var authorrepo = new AuthorRepository(ctx);
-            //var genrerepo = new GenreRepository(ctx);
-
-            //booklogic = new BookLogic(bookrepo);
-            //authorlogic = new AuthorLogic(authorrepo);
-            //genrelogic = new GenreLogic(genrerepo);
-
-
-
             rest = new RestService("http://localhost:20300/", "book");
 
             var bookSubSubMenu = new ConsoleMenu(args, level: 2)

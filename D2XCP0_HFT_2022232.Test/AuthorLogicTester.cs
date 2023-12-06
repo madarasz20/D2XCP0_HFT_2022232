@@ -80,5 +80,6 @@ namespace D2XCP0_HFT_2022232.Test
 
             Assert.That(wau, Is.EqualTo(248));
         }
+        
     }
 }

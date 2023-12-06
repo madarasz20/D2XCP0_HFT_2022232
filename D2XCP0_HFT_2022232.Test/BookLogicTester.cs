@@ -11,50 +11,72 @@ using System.Threading.Tasks;
 
 namespace D2XCP0_HFT_2022232.Test
 {
-    public class FakeBookRepo : IRepository<Book>
+
+
+
+    [TestFixture]
+    public class BookLogicTester
     {
-        public void Create(Book item)
-        {
-            throw new NotImplementedException();
-        }
 
-        public void Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
+        BookLogic logic;
+        Mock<IRepository<Book>> MockBookRepo;
 
-        public Book Read(int id)
+        [SetUp]
+        public void Init()
         {
-            throw new NotImplementedException();
-        }
-
-        public IQueryable<Book> ReadAll()
-        {
-            return new List<Book>()
+            MockBookRepo = new Mock<IRepository<Book>>();
+            MockBookRepo.Setup(x => x.ReadAll()).Returns(new List<Book>()
             {
                 new Book("1#Harry Potter and the Sorcerer's Stone#1#9#3300#93#400"),
                 new Book("2#Pride and Prejudice#2#1#4265#100#200"),
                 new Book("3#The Adventures of Huckleberry Finn#3#8#2350#85#256"),
                 new Book("4#Metamorphosis#9#6#1435#87#270"),
-                new Book("13#The Running Grave#1#6#3200#85#190"),
-            }.AsQueryable();
+                new Book("13#The Running Grave#1#6#3200#85#190")
+            }.AsQueryable());
+
+            logic = new BookLogic(MockBookRepo.Object);
         }
-
-        public void Update(Book item)
+        [Test]
+        public void CreateBookTestCorrect()
         {
-            throw new NotImplementedException();
+            var book = new Book()
+            {
+                BookID = 10,
+                Title = "WAUWAU",
+                AuthorID = 1,
+                GenreID = 1,
+                Price = 1000,
+                Rating = 12,
+                Pages = 400
+            };
+            logic.Create(book);
+            MockBookRepo.Verify(t => t.Create(book), Times.Once());
         }
-    }
-
-    [TestFixture]
-    public class BookLogicTester
-    {
-        BookLogic logic;
-
-        [SetUp]
-        public void Init()
+        [Test]
+        public void CreateBookTestINCorrect()
         {
-            logic = new BookLogic(new FakeBookRepo());
+            var book = new Book()
+            {
+                BookID = 10,
+                Title = "1",
+                AuthorID = 1,
+                GenreID = 1,
+                Price = 1000,
+                Rating = 12,
+                Pages = 400
+            };
+            try
+            {
+                logic.Create(book);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            
+            
+
+            MockBookRepo.Verify(t => t.Create(book), Times.Never());
         }
 
         [Test]
@@ -108,7 +130,7 @@ namespace D2XCP0_HFT_2022232.Test
                 Id = 6,
                 Count = 2
             };
-            
+
 
             Assert.AreEqual(expected, result);
         }
@@ -134,7 +156,7 @@ namespace D2XCP0_HFT_2022232.Test
             };
             Assert.AreEqual(expected, result);
         }
-        
-        
+
+
     }
 }

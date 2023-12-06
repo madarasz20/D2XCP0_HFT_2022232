@@ -45,6 +45,7 @@ namespace D2XCP0_HFT_2022232.Client
                .Add("Most pages Book", () => MostPagesInABookInfo())
                .Add("Books in a specific genre", () => BooksInGenre())
                .Add("Books by a specific author", () => BooksbyAuthor())
+               .Add("List Books with the author", () => BooksWithAuthor())
                .Add("Exit", ConsoleMenu.Close);
 
             var autSubSubMenu = new ConsoleMenu(args, level: 2)
@@ -400,6 +401,17 @@ namespace D2XCP0_HFT_2022232.Client
             {
                 Console.WriteLine(item.Title);
             }
+            Console.ReadLine();
+        }
+
+        static void BooksWithAuthor()
+        {
+            List<Book> aa = rest.Get<Book>("Stat/BooksWithAuthor");
+            foreach (var item in aa)
+            {
+                Console.WriteLine(item.Title + '\t' + item.Author.AuthorName);
+            }
+
             Console.ReadLine();
         }
         

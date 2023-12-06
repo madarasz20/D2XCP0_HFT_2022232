@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using D2XCP0_HFT_2022232.Models;
 using D2XCP0_HFT_2022232.Repository;
+using Microsoft.EntityFrameworkCore;
 
 namespace D2XCP0_HFT_2022232.Logic
 {
@@ -127,6 +128,12 @@ namespace D2XCP0_HFT_2022232.Logic
         {
             var rtw = repo.ReadAll().Where(t => t.AuthorID == authorid).ToList();
             return rtw;
+        }
+        public IEnumerable<Book> BooksWithAuthors()
+        {
+            var booksWithAuthors = this.repo.ReadAll().Include(b => b.Author).ToList();
+           
+            return booksWithAuthors;
         }
 
 

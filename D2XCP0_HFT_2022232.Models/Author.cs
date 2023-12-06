@@ -45,6 +45,22 @@ namespace D2XCP0_HFT_2022232.Models
             string format = "MM/dd/yyyy";
             BirthDay = DateTime.ParseExact(split[2], format, System.Globalization.CultureInfo.InvariantCulture);
         }
-
+        public override bool Equals(object obj)
+        {
+            Author a = obj as Author;
+            if (a == null)
+            {
+                return false;
+            }
+            else
+            {
+                return this.AuthorID == a.AuthorID && this.AuthorName == a.AuthorName &&
+                    this.BirthDay == a.BirthDay && this.Age ==a.Age;
+            }
+        }
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(this.AuthorID, this.AuthorName, this.BirthDay, this.Age);
+        }
     }
 }

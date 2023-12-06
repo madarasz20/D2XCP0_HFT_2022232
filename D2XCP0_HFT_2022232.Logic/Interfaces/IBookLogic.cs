@@ -21,5 +21,7 @@ namespace D2XCP0_HFT_2022232.Logic
         NameAndCount MostFreqGenre();
         public IEnumerable<Book> BooksInGenre(int genreid);
         public IEnumerable<Book> BooksbyAuthor(int authorid);
+        public IEnumerable<Book> BooksWithAuthors();
+
     }
 }

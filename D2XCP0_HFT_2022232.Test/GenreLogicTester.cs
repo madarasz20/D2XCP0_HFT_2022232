@@ -11,39 +11,7 @@ using System.Threading.Tasks;
 
 namespace D2XCP0_HFT_2022232.Test
 {
-    public class FakeGenreRepo : IRepository<Genre>
-    {
-        
 
-        public void Create(Genre item)
-        {
-        }
-
-        public void Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Genre Read(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IQueryable<Genre> ReadAll()
-        {
-            return new List<Genre>()
-            {
-                new Genre("1#Fiction"),
-                new Genre("2#Non-Fiction"),
-                new Genre("3#Mistery"),
-            }.AsQueryable();
-        }
-
-        public void Update(Genre item)
-        {
-            throw new NotImplementedException();
-        }
-    }
 
     [TestFixture]
     public class GenreLogicTester
@@ -73,20 +41,36 @@ namespace D2XCP0_HFT_2022232.Test
         }
 
         [Test]
-        public void CreateTest()
+        public void CreateTestCorrect()
         {
-            //var movie = new Movie() { Title = "Vukk" };
+            var g = new Genre()
+            {
+                GenreID = 111,
+                GenreName = "Test",
+            };
 
-            ////ACT
-            //logic.Create(movie);
+            logic.Create(g);
+            mockGenreRepo.Verify(x => x.Create(g), Times.Once());
 
-            ////ASSERT
-            //mockMovieRepo.Verify(r => r.Create(movie), Times.Once);
-
-            var genre = new Genre() { GenreName = "test" , GenreID = 77};
-            logic.Create(genre);
-            //Assert.That(logic.Read(77).GenreName, Is.EqualTo("test"));
-            mockGenreRepo.Verify(r => r.Create(genre), Times.Once);
+        }
+        [Test]
+        public void CreateTestINCorrect()
+        {
+            var g = new Genre()
+            {
+                GenreID = 111,
+                GenreName = "Te",
+            };
+            try
+            {
+                logic.Create(g);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            
+            mockGenreRepo.Verify(x => x.Create(g), Times.Never());
 
         }
     }

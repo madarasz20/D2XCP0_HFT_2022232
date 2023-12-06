@@ -22,6 +22,9 @@ namespace D2XCP0_HFT_2022232.Logic
         public IEnumerable<Book> BooksInGenre(int genreid);
         public IEnumerable<Book> BooksbyAuthor(int authorid);
         public IEnumerable<Book> BooksWithAuthors();
+        public IEnumerable<Book> bga();
+
+        public IEnumerable<Book> BooksandAuthorsFilteredByGenre(int desiredGenreId);
 
     }
 }

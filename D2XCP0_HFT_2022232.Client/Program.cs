@@ -46,6 +46,8 @@ namespace D2XCP0_HFT_2022232.Client
                .Add("Books in a specific genre", () => BooksInGenre())
                .Add("Books by a specific author", () => BooksbyAuthor())
                .Add("List Books with the author", () => BooksWithAuthor())
+               .Add("List Books with the author and the genre", () => bga())
+               .Add("List Books filtered by the genre", () => BooksandAuthorsFilteredByGenre())
                .Add("Exit", ConsoleMenu.Close);
 
             var autSubSubMenu = new ConsoleMenu(args, level: 2)
@@ -375,7 +377,7 @@ namespace D2XCP0_HFT_2022232.Client
             int genreid = int.Parse(Console.ReadLine());
             var g = rest.Get<Genre>(genreid, "genre");
 
-            List<Book> books = rest.Get<Book>("Stat/BooksInGenre");
+            var books = rest.Get<Book>($"Stat/BooksInGenre/{genreid}");
             
             Console.WriteLine("Books in " + g.GenreName + ":");
 
@@ -392,7 +394,7 @@ namespace D2XCP0_HFT_2022232.Client
             int authorid = int.Parse(Console.ReadLine());
             var a = rest.Get<Author>(authorid, "Author");
 
-            List<Book> books = rest.Get<Book>("Stat/BooksbyAuthor");
+            List<Book> books = rest.Get<Book>($"Stat/BooksbyAuthor/{authorid}");
 
             Console.WriteLine("Books by " + a.AuthorName + ":");
 
@@ -414,7 +416,27 @@ namespace D2XCP0_HFT_2022232.Client
 
             Console.ReadLine();
         }
-        
+        static void bga()
+        {
+            List<Book> a = rest.Get<Book>("Stat/bga");
+            foreach (var item in a)
+            {
+                Console.WriteLine(item.Title + " " + item.Author.AuthorName + " " + item.Genre.GenreName);
+            }
+            Console.ReadLine();
+        }
+        static void BooksandAuthorsFilteredByGenre()
+        {
+            Console.WriteLine("The number of the genre: ");
+            int desiredgenreid = int.Parse(Console.ReadLine());
+            List<Book> a = rest.Get<Book>($"Stat/BooksandAuthorsFilteredByGenre/{desiredgenreid}");
+            foreach (var item in a)
+            {
+                Console.WriteLine(item.Title + "\t" +item.Author.AuthorName);
+            }
+            Console.ReadLine();
+        }
+
 
 
         //Genre

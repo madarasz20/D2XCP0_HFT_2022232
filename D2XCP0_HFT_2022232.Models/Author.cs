@@ -16,6 +16,7 @@ namespace D2XCP0_HFT_2022232.Models
         public int AuthorID { get; set; }
         [Required]
         [StringLength(80)]
+        [MinLength(5)]
         public string AuthorName { get; set; }
         public DateTime BirthDay { get; set; }
 

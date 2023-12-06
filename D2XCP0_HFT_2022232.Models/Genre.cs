@@ -14,7 +14,7 @@ namespace D2XCP0_HFT_2022232.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int GenreID { get; set; }
-        
+        [MinLength(3)]
         public string GenreName { get; set; }
         [JsonIgnore]
         public virtual ICollection<Book> Books { get; set; }

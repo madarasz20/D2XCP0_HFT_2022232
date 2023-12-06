@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -68,6 +69,7 @@ namespace D2XCP0_HFT_2022232.Models
             return HashCode.Combine(this.BookID, this.Title, this.AuthorID, this.GenreID
                 , this.Price, this.Rating);
         }
+
 
     }
 }

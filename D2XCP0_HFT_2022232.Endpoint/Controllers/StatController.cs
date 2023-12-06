@@ -94,12 +94,12 @@ namespace D2XCP0_HFT_2022232.Endpoint.Controllers
         {
             return this.booklogic.MostPagesInABookInfo();
         }
-        [HttpGet]
+        [HttpGet("{genreid}")]
         public IEnumerable<Book> BooksInGenre(int genreid)
         {
             return this.booklogic.BooksInGenre(genreid);
         }
-        [HttpGet]
+        [HttpGet("{authorid}")]
         public IEnumerable<Book> BooksbyAuthor(int authorid)
         {
             return this.booklogic.BooksbyAuthor(authorid);
@@ -109,7 +109,18 @@ namespace D2XCP0_HFT_2022232.Endpoint.Controllers
         {
             return this.booklogic.BooksWithAuthors();
         }
-        
-        
+
+        [HttpGet]
+        public IEnumerable<Book> bga()
+        {
+            return this.booklogic.bga();
+        }
+
+        [HttpGet("{desiredgenreid}")]
+        public IEnumerable<Book> BooksandAuthorsFilteredByGenre(int desiredgenreid)
+        {
+            return this.booklogic.BooksandAuthorsFilteredByGenre(desiredgenreid);
+        }
+
     }
 }

@@ -10,11 +10,12 @@ namespace D2XCP0_HFT_2022232.Logic
     public class BookLogic : IBookLogic
     {
         IRepository<Book> repo;
-        //IRepository<Author> authorRepo;
+        IRepository<Author> authorRepo;
 
-        public BookLogic(IRepository<Book> repo)
+        public BookLogic(IRepository<Book> repo, IRepository<Author> au)
         {
             this.repo = repo;
+            this.authorRepo = au;
         }
 
         public void Create(Book item)
@@ -134,6 +135,20 @@ namespace D2XCP0_HFT_2022232.Logic
             var booksWithAuthors = this.repo.ReadAll().Include(b => b.Author).ToList();
            
             return booksWithAuthors;
+        }
+        
+        public IEnumerable<Book> bga()
+        {
+            var booksWithAuthorsAndGenres = this.repo.ReadAll().Include(b => b.Author).Include(b => b.Genre).ToList();
+            return booksWithAuthorsAndGenres;
+        }
+        public IEnumerable<Book> BooksandAuthorsFilteredByGenre(int desiredGenreId)
+        {
+            var booksWithAuthorsFilteredByGenre = this.repo.ReadAll()
+                .Include(b => b.Author)
+                .Where(b => b.GenreID == desiredGenreId).ToList();
+
+            return booksWithAuthorsFilteredByGenre;
         }
 
 

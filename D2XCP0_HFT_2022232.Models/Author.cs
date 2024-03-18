@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace D2XCP0_HFT_2022232.Models
 {
-    public class Author
+    public class Author 
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -46,6 +47,8 @@ namespace D2XCP0_HFT_2022232.Models
             string format = "MM/dd/yyyy";
             BirthDay = DateTime.ParseExact(split[2], format, System.Globalization.CultureInfo.InvariantCulture);
         }
+
+
         public override bool Equals(object obj)
         {
             Author a = obj as Author;

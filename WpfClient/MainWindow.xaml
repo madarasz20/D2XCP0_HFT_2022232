@@ -17,10 +17,14 @@
         <ListBox ItemsSource="{Binding Authors}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Label Content="{Binding AuthorName}"/>
+                    <Label Content="{Binding AuthorName}" />
                 </DataTemplate>
             </ListBox.ItemTemplate>
-            
         </ListBox>
+        <StackPanel Grid.Column="1">
+            <Button Content="Create Author" Command="{Binding CreateAuthorCommand}" Margin="10" Padding="10"/>
+            <Button Content="Delete Author" Command="{Binding DeleteAuthorCommand}" Margin="10" Padding="10"/>
+            <Button Content="Update Author" Command="{Binding UpdateAuthorCommand}" Margin="10" Padding="10"/>
+        </StackPanel>
     </Grid>
 </Window>

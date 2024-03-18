@@ -47,6 +47,7 @@ namespace D2XCP0_HFT_2022232.Endpoint
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "D2XCP0_HFT_2022232.Endpoint", Version = "v1" });
             });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

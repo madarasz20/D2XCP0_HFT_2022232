@@ -37,5 +37,11 @@ namespace WpfApp
             BookEditor bookEditor = new BookEditor();
             bookEditor.ShowDialog();
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            GenreEditor genreEditor = new GenreEditor();
+            genreEditor.ShowDialog();
+        }
     }
 }

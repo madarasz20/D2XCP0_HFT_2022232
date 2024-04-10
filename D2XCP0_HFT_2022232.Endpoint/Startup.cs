@@ -1,3 +1,4 @@
+using D2XCP0_HFT_2022232.Endpoint.Services;
 using D2XCP0_HFT_2022232.Logic;
 using D2XCP0_HFT_2022232.Models;
 using D2XCP0_HFT_2022232.Repository;
@@ -40,7 +41,7 @@ namespace D2XCP0_HFT_2022232.Endpoint
             services.AddTransient<IAuthorLogic, AuthorLogic>();
             services.AddTransient<IGenreLogic, GenreLogic>();
 
-
+            services.AddSignalR();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -74,6 +75,7 @@ namespace D2XCP0_HFT_2022232.Endpoint
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<SignalRHub>("/hub");
             });
         }
     }

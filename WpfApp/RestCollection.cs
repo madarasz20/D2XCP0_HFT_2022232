@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace MovieDbApp.WpfClient
+namespace WpfApp
 {
     public class RestService
     {

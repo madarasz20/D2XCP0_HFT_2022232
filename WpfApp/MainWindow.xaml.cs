@@ -43,5 +43,11 @@ namespace WpfApp
             GenreEditor genreEditor = new GenreEditor();
             genreEditor.ShowDialog();
         }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            NcEditorWindow ncEditorWindow = new NcEditorWindow();
+            ncEditorWindow.ShowDialog();
+        }
     }
 }

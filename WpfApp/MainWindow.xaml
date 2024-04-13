@@ -16,6 +16,7 @@
             <Button Content="Author Editor" Height="50" FontSize="20" Margin="10" Padding="10" Click="Button_Click" />
             <Button Content="Book Editor" Height="50" FontSize="20" Margin="10" Padding="10" Click="Button_Click_1" />
             <Button Content="Genre Editor" Height="50" FontSize="20" Margin="10" Padding="10" Click="Button_Click_2" />
+            <Button Content="Non-Crud Editor" Height="50" FontSize="20" Margin="10" Padding="10" Click="Button_Click_3"  />
         </StackPanel>
     </Grid>
 </Window>

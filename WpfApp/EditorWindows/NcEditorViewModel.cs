@@ -46,19 +46,19 @@ namespace WpfApp.EditorWindows
             }
         }
 
-        public ObservableCollection<Author> numOfAuthors { get; set; }
-        public ObservableCollection<Author> NumOfAuthors
-        {
-            get
-            {
-                return numOfAuthors;
-            }
-            set
-            {
-                numOfAuthors = value;
-                OnPropertyChanged();
-            }
-        }
+        //public ObservableCollection<int> numOfAuthors { get; set; }
+        //public ObservableCollection<int> NumOfAuthors
+        //{
+        //    get
+        //    {
+        //        return numOfAuthors;
+        //    }
+        //    set
+        //    {
+        //        numOfAuthors = value;
+        //        OnPropertyChanged();
+        //    }
+        //}
         public ObservableCollection<Book> bestRatedBookInfo { get; set; }
         public ObservableCollection<Book> BestRatedBookInfo
         {
@@ -92,11 +92,11 @@ namespace WpfApp.EditorWindows
         {
             get
             {
-                return MostExpensiveBookInfo;
+                return mostExpensiveBookInfo;
             }
             set
             {
-                MostExpensiveBookInfo = value;
+                mostExpensiveBookInfo = value;
                 OnPropertyChanged();
             }
         }
@@ -115,22 +115,24 @@ namespace WpfApp.EditorWindows
             }
         }
 
-        public ObservableCollection<Book> mostFreqGenre { get; set; }
-        public ObservableCollection<Book> MostFreqGenre
-        {
-            get
-            {
-                return mostFreqGenre;
-            }
-            set
-            {
-                mostFreqGenre = value;
-                OnPropertyChanged();
-            }
-        }
+        //NameAndCount
 
-        public ObservableCollection<IEnumerable<Book>> booksInGenre { get; set; }
-        public ObservableCollection<IEnumerable<Book>> BooksInGenre
+        //public ObservableCollection<Book> mostFreqGenre { get; set; }
+        //public ObservableCollection<Book> MostFreqGenre
+        //{
+        //    get
+        //    {
+        //        return mostFreqGenre;
+        //    }
+        //    set
+        //    {
+        //        mostFreqGenre = value;
+        //        OnPropertyChanged();
+        //    }
+        //}
+
+        public ObservableCollection<Book> booksInGenre { get; set; }
+        public ObservableCollection<Book> BooksInGenre
         {
             get
             {
@@ -143,8 +145,8 @@ namespace WpfApp.EditorWindows
             }
         }
 
-        public ObservableCollection<IEnumerable<Book>> booksbyAuthor { get; set; }
-        public ObservableCollection<IEnumerable<Book>> BooksbyAuthor
+        public ObservableCollection<Book> booksbyAuthor { get; set; }
+        public ObservableCollection<Book> BooksbyAuthor
         {
             get
             {
@@ -156,8 +158,8 @@ namespace WpfApp.EditorWindows
                 OnPropertyChanged();
             }
         }
-        public ObservableCollection<IEnumerable<Book>> booksWithAuthors { get; set; }
-        public ObservableCollection<IEnumerable<Book>> BooksWithAuthors
+        public ObservableCollection<Book> booksWithAuthors { get; set; }
+        public ObservableCollection<Book> BooksWithAuthors
         {
             get
             {
@@ -170,8 +172,8 @@ namespace WpfApp.EditorWindows
             }
         }
 
-        public ObservableCollection<IEnumerable<Book>> bga { get; set; }
-        public ObservableCollection<IEnumerable<Book>> Bga
+        public ObservableCollection<Book> bga { get; set; }
+        public ObservableCollection<Book> Bga
         {
             get
             {
@@ -184,8 +186,8 @@ namespace WpfApp.EditorWindows
             }
         }
 
-        public ObservableCollection<IEnumerable<Book>> booksandAuthorsFilteredByGenre { get; set; }
-        public ObservableCollection<IEnumerable<Book>> BooksandAuthorsFilteredByGenre
+        public ObservableCollection<Book> booksandAuthorsFilteredByGenre { get; set; }
+        public ObservableCollection<Book> BooksandAuthorsFilteredByGenre
         {
             get
             {
@@ -213,12 +215,12 @@ namespace WpfApp.EditorWindows
                 OnPropertyChanged();
                 (YoungestAuthorCommand as RelayCommand).NotifyCanExecuteChanged();
                 (OldestAuthorCommand as RelayCommand).NotifyCanExecuteChanged();
-                (NumOfAuthorsCommand as RelayCommand).NotifyCanExecuteChanged();
+                //(NumOfAuthorsCommand as RelayCommand).NotifyCanExecuteChanged();
                 (BestRatedBookInfoCommand as RelayCommand).NotifyCanExecuteChanged();
                 (LongestTitleBookInfoCommand as RelayCommand).NotifyCanExecuteChanged();
                 (MostExpensiveBookInfoCommand as RelayCommand).NotifyCanExecuteChanged();
                 (MostPagesInABookInfoCommand as RelayCommand).NotifyCanExecuteChanged();
-                (MostFreqGenreCommand as RelayCommand).NotifyCanExecuteChanged();
+                //(MostFreqGenreCommand as RelayCommand).NotifyCanExecuteChanged();
                 (BooksInGenreCommand as RelayCommand).NotifyCanExecuteChanged();
                 (BooksbyAuthorCommand as RelayCommand).NotifyCanExecuteChanged();
                 (BooksWithAuthorsCommand as RelayCommand).NotifyCanExecuteChanged();
@@ -252,8 +254,8 @@ namespace WpfApp.EditorWindows
                         return YoungestAuthor;
                     case "OldestAuthor":
                         return OldestAuthor;
-                    case "NumOfAuthors":
-                        return NumOfAuthors;
+                    //case "NumOfAuthors":
+                    //    return NumOfAuthors;
                     case "BestRatedBookInfo":
                         return BestRatedBookInfo;
                     case "LongestTitleBookInfo":
@@ -262,8 +264,8 @@ namespace WpfApp.EditorWindows
                         return MostExpensiveBookInfo;
                     case "MostPagesInABookInfo":
                         return MostPagesInABookInfo;
-                    case "MostFreqGenre":
-                        return MostFreqGenre;
+                    //case "MostFreqGenre":
+                    //    return MostFreqGenre;
                     case "BooksInGenre":
                         return BooksInGenre;
                     case "BooksbyAuthor":
@@ -289,19 +291,144 @@ namespace WpfApp.EditorWindows
             }
         }
 
-        public ICommand YoungestAuthorCommand { get; set; }
-        public ICommand OldestAuthorCommand { get; set; }
-        public ICommand NumOfAuthorsCommand { get; set; }
-        public ICommand BestRatedBookInfoCommand { get; set; }
-        public ICommand LongestTitleBookInfoCommand { get; set; }
-        public ICommand MostExpensiveBookInfoCommand { get; set; }
-        public ICommand MostPagesInABookInfoCommand { get; set; }
-        public ICommand MostFreqGenreCommand { get; set; }
+        public ICommand YoungestAuthorCommand { get; set; }             //pipa
+        public ICommand OldestAuthorCommand { get; set; }               //pipa
+        //public ICommand NumOfAuthorsCommand { get; set; }
+        public ICommand BestRatedBookInfoCommand { get; set; }          //pipa
+        public ICommand LongestTitleBookInfoCommand { get; set; }           //pipa
+        public ICommand MostExpensiveBookInfoCommand { get; set; }              //pipa
+        public ICommand MostPagesInABookInfoCommand { get; set; }               //pipa
+        //public ICommand MostFreqGenreCommand { get; set; }
         public ICommand BooksInGenreCommand { get; set; }
         public ICommand BooksbyAuthorCommand { get; set; }
-        public ICommand BooksWithAuthorsCommand { get; set; }
+        public ICommand BooksWithAuthorsCommand { get; set; }                   //pipa
         public ICommand BgaCommand { get; set; }
         public ICommand BooksandAuthorsFilteredByGenreCommand { get; set; }
+
+        public NcEditorViewModel()
+        {
+            if (!IsInDesignMode)
+            {
+                rest = new RestService("http://localhost:20300/", "swagger");
+
+                YoungestAuthorCommand = new RelayCommand(() =>
+                {
+                    var a = rest.GetSingle<Author>("http://localhost:20300/Stat/YoungestAuthor");
+                    YoungestAuthor = new ObservableCollection<Author>();
+                    YoungestAuthor.Add(a);
+                    SelectedMethod = "YoungestAuthor";
+                });
+
+                OldestAuthorCommand = new RelayCommand(() =>
+                {
+                    var a = rest.GetSingle<Author>("http://localhost:20300/Stat/OldestAuthor");
+                    OldestAuthor = new ObservableCollection<Author>();
+                    OldestAuthor.Add(a);    
+                    SelectedMethod = "OldestAuthor";
+                });
+
+                //NumOfAuthorsCommand = new RelayCommand(() =>
+                //{
+                //    var a = rest.GetSingle<int>("http://localhost:20300/Stat/NumOfAuthors");
+                //    NumOfAuthors = new ObservableCollection<int>();
+                //    NumOfAuthors.Add(a);
+                //    SelectedMethod = "NumOfAuthors";
+                //});
+                BestRatedBookInfoCommand = new RelayCommand(() =>
+                {
+                    var a = rest.GetSingle<Book>("http://localhost:20300/Stat/BestRatedBookInfo");
+                    BestRatedBookInfo = new ObservableCollection<Book>();
+                    BestRatedBookInfo.Add(a);
+                    SelectedMethod = "BestRatedBookInfo";
+                });
+                LongestTitleBookInfoCommand = new RelayCommand(() =>
+                {
+                    var a = rest.GetSingle<Book>("http://localhost:20300/Stat/LongestTitleBookInfo");
+                    LongestTitleBookInfo = new ObservableCollection<Book>();
+                    LongestTitleBookInfo.Add(a);
+                    SelectedMethod = "LongestTitleBookInfo";
+                });
+                MostExpensiveBookInfoCommand = new RelayCommand(() =>
+                {
+                    var a = rest.GetSingle<Book>("http://localhost:20300/Stat/MostExpensiveBookInfo");
+                    MostExpensiveBookInfo = new ObservableCollection<Book>();
+                    MostExpensiveBookInfo.Add(a);
+                    SelectedMethod = "MostExpensiveBookInfo";
+                });
+                MostPagesInABookInfoCommand = new RelayCommand(() =>
+                {
+                    var a = rest.GetSingle<Book>("http://localhost:20300/Stat/MostPagesInABookInfo");
+                    MostPagesInABookInfo = new ObservableCollection<Book>();
+                    MostPagesInABookInfo.Add(a);
+                    SelectedMethod = "MostPagesInABookInfo";
+                });
+                BooksInGenreCommand = new RelayCommand(() =>
+                {
+                    int genreid = int.Parse(Tb_input);
+                    if (genreid != 0)
+                    {
+                        var a = rest.Get<Book>($"http://localhost:20300/Stat/BooksInGenre/{genreid}");
+                        BooksInGenre = new ObservableCollection<Book>();
+                        foreach (var item in a)
+                        {
+
+                            BooksInGenre.Add(item);
+                        }
+                        SelectedMethod = "BooksInGenre";
+                    }
+                    
+                });
+                BooksbyAuthorCommand = new RelayCommand(() =>
+                {
+                    int authorid = int.Parse(Tb_input);
+                    var a = rest.Get<Book>($"http://localhost:20300/Stat/BooksbyAuthor/{authorid}");
+                    BooksbyAuthor = new ObservableCollection<Book>();
+                    foreach (var item in a)
+                    {
+                        BooksbyAuthor.Add(item);
+                    }
+                    SelectedMethod = "BooksbyAuthor";
+                });
+                BooksWithAuthorsCommand = new RelayCommand(() =>
+                {
+
+
+                    var a = rest.Get<Book>($"http://localhost:20300/Stat/BooksWithAuthor");
+                    BooksWithAuthors = new ObservableCollection<Book>();
+
+                    foreach (var item in a)
+                    {
+
+                        BooksWithAuthors.Add(item);
+                        
+                    }
+                    SelectedMethod = "BooksWithAuthors";
+                });
+                BgaCommand = new RelayCommand(() =>
+                {
+                    var a = rest.Get<Book>($"http://localhost:20300/Stat/bga");
+                    Bga = new ObservableCollection<Book>();
+                    foreach (var item in a)
+                    {
+                        Bga.Add(item);
+                    }
+                    SelectedMethod = "bga";
+                });
+                BooksandAuthorsFilteredByGenreCommand = new RelayCommand(() =>
+                {
+                    int desiredgenreid = int.Parse(Tb_input);
+                    var a = rest.Get<Book>($"http://localhost:20300/Stat/BooksandAuthorsFilteredByGenre/{desiredgenreid}");
+                    BooksandAuthorsFilteredByGenre = new ObservableCollection<Book>();
+                    foreach (var item in a)
+                    {
+
+                        BooksandAuthorsFilteredByGenre.Add(item);
+                    }
+                    SelectedMethod = " BooksandAuthorsFilteredByGenre";
+                });
+
+            }
+        }
 
     }
 }

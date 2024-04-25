@@ -6,7 +6,161 @@
         xmlns:local="clr-namespace:WpfApp.EditorWindows"
         mc:Ignorable="d"
         Title="NcEditorWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <local:NcEditorViewModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <DataTemplate x:Key="AuthorTemplate">
+            <Border>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="{Binding AuthorName}" Margin="10" Padding="10" FontSize="10"/>
+                    <Label Content="{Binding Age}" Margin="10" Padding="10" FontSize="10"/>
+                </Grid>
+            </Border>
+        </DataTemplate>
+
+        <DataTemplate x:Key="BookTemplate">
+            <Border>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="{Binding Title}" Margin="10" Padding="10" FontSize="10"/>
+                    <Label Content="{Binding Author.AuthorName}" Margin="10" Padding="10" FontSize="10"/>
+                </Grid>
+            </Border>
+        </DataTemplate>
+
+        <DataTemplate x:Key="IEnumerabelBookTemplate">
+            <Border>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="{Binding Title}" Margin="10" Padding="10" FontSize="10"/>
+
+                </Grid>
+            </Border>
+        </DataTemplate>
+    </Window.Resources>
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <ListBox>
+            <Label Content="Functions:" Margin="5" Padding="10" FontSize="20" HorizontalContentAlignment="Center"/>
+            <Button Content="YoungestAuthor" Command="{Binding YoungestAuthorCommand}" Margin="5" Padding="5" FontSize="15"/>
+            <Button Content="OldestAuthor" Command="{Binding OldestAuthorCommand}" Margin="5" Padding="5" FontSize="15"/>
+            <Button Content="Best Rated Book" Command="{Binding BestRatedBookInfoCommand}" Margin="5" Padding="5" FontSize="15"/>
+            <Button Content="Book with the longest title" Command="{Binding LongestTitleBookInfoCommand}" Margin="5" Padding="5" FontSize="15"/>
+            <Button Content="Most expensive book" Command="{Binding MostExpensiveBookInfoCommand}" Margin="5" Padding="5" FontSize="15"/>
+            <Button Content="Most pages in a book" Command="{Binding MostPagesInABookInfoCommand}" Margin="5" Padding="5" FontSize="15"/>
+            <Button Content="Books in the genre" Command="{Binding BooksInGenreCommand}" Margin="5" Padding="5" FontSize="15"/>
+            <Button Content="Books by Author" Command="{Binding BooksbyAuthorCommand}" Margin="5" Padding="5" FontSize="15"/>
+            <Button Content="BooksWithAuthors" Command="{Binding BooksWithAuthorsCommand}" Margin="5" Padding="5" FontSize="15"/>
+            <Button Content="BGA" Command="{Binding Bga}" Margin="5" Padding="5" FontSize="15"/>
+            <Button Content="BooksandAuthorsFilteredByGenre" Command="{Binding BooksandAuthorsFilteredByGenreCommand}" Margin="5" Padding="5" FontSize="15"/>
+        </ListBox>
+        <StackPanel Grid.Column="1">
+            <TextBox Text="{Binding Tb_input}" Padding="5" Margin="5"/>
+        </StackPanel>
+        <ListBox Grid.Column="1" ItemsSource="{Binding SelectedObservableCollection}" Height="380" VerticalAlignment="Bottom">
+            <ListBox.ItemTemplateSelector>
+                <local:MyItemTemplateSelector>
+                    <local:MyItemTemplateSelector.AuthorTemplate>
+                        <DataTemplate>
+                            <Border>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                    </Grid.RowDefinitions>
+                                    <Label Grid.Column="0" Grid.Row="0" Content="Author" Margin="5" Padding="5" FontSize="10"/>
+                                    <Label Grid.Column="1" Grid.Row="0" Content="Age" Margin="5" Padding="5" FontSize="10"/>
+
+                                    <Label Grid.Column="0" Grid.Row="1" Content="{Binding AuthorName}" Margin="5" Padding="5" FontSize="10"/>
+                                    <Label Grid.Column="1" Grid.Row="1" Content="{Binding Age}" Margin="5" Padding="5" FontSize="10"/>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </local:MyItemTemplateSelector.AuthorTemplate>
+
+                    <local:MyItemTemplateSelector.BookTemplate>
+                        <DataTemplate>
+                            <Border>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                    </Grid.RowDefinitions>
+                                    <Label Grid.Column="0" Grid.Row="0" Content="Title" Margin="5" Padding="5" FontSize="10"/>
+                                    <Label Grid.Column="1" Grid.Row="0" Content="Price" Margin="5" Padding="5" FontSize="10"/>
+                                    <Label Grid.Column="2" Grid.Row="0" Content="Rating" Margin="5" Padding="5" FontSize="10"/>
+                                    <Label Grid.Column="3" Grid.Row="0" Content="Pages" Margin="5" Padding="5" FontSize="10"/>
+                                    <Label Grid.Column="4" Grid.Row="0" Content="Author" Margin="5" Padding="5" FontSize="10"/>
+                                    
+                                    <Label Grid.Column="0" Grid.Row="1" Content="{Binding Title}" Margin="5" Padding="5" FontSize="10"/>
+                                    <Label Grid.Column="1" Grid.Row="1" Content="{Binding Price}" Margin="5" Padding="5" FontSize="10"/>
+                                    <Label Grid.Column="2" Grid.Row="1" Content="{Binding Rating}" Margin="5" Padding="5" FontSize="10"/>
+                                    <Label Grid.Column="3" Grid.Row="1" Content="{Binding Pages}" Margin="5" Padding="5" FontSize="10"/>
+                                    <Label Grid.Column="4" Grid.Row="1" Content="{Binding Author.AuthorName}" Margin="5" Padding="5" FontSize="10"/>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </local:MyItemTemplateSelector.BookTemplate>
+
+                    <local:MyItemTemplateSelector.IEnumerabelBookTemplate>
+                        <DataTemplate>
+                            <Border>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                    </Grid.RowDefinitions>
+                                    <Label Grid.Column="0" Grid.Row="0" Content="Title" Margin="5" Padding="5" FontSize="10"/>
+                                    <Label Grid.Column="1" Grid.Row="0" Content="Author" Margin="5" Padding="5" FontSize="10"/>
+                                    <Label Grid.Column="2" Grid.Row="0" Content="Genre" Margin="5" Padding="5" FontSize="10"/>
+
+
+                                    <Label Grid.Column="0" Grid.Row="1" Content="{Binding Title}" Margin="5" Padding="5" FontSize="10"/>
+                                    <Label Grid.Column="1" Grid.Row="1" Content="{Binding Author.AuthorName}" Margin="5" Padding="5" FontSize="10"/>
+                                    <Label Grid.Column="2" Grid.Row="1" Content="{Binding Genre.GenreName}" Margin="5" Padding="5" FontSize="10"/>
+
+                                    
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </local:MyItemTemplateSelector.IEnumerabelBookTemplate>
+                </local:MyItemTemplateSelector>
+
+                
+                
+
+            </ListBox.ItemTemplateSelector>
+
+        </ListBox>
     </Grid>
 </Window>

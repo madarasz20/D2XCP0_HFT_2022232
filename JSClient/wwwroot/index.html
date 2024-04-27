@@ -12,7 +12,14 @@
         <label>Author name</label>
         <input type="text" id="authorname" />
         <button type="button" onclick="create()">Add author</button>
-        
+
+    </div>
+
+    <div id="updateformdiv">
+        <label>Author name</label>
+        <input type="text" id="authornametoupdate" />
+        <button type="button" onclick="update()">Update author</button>
+
     </div>
 
     <table>
@@ -24,11 +31,10 @@
             </tr>
         </thead>
         <tbody id="resultarea">
-            
         </tbody>
     </table>
 
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

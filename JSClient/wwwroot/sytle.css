@@ -31,3 +31,15 @@ th{
     margin:10px;
     padding: 5px;
 }
+
+#updateformdiv {
+    display:none;
+
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+    #updateformdiv button, label, input {
+        margin: 10px;
+        padding: 5px;
+    }

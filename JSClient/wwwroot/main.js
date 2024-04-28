@@ -8,6 +8,9 @@ function linker(id) {
         case id == 'books':
             window.location.href = "./book.html";
             break;
+        case id == 'genres':
+            window.location.href = "./genre.html";
+            break;
         default:
     }
 }

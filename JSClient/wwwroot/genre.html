@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Genre UI</title>
+    <link rel="stylesheet" href="sytle.css" />
+</head>
+<body>
+    <h1>Genre Catalog</h1>
+
+    <div id="formdiv">
+        <label>Genre name</label>
+        <input type="text" id="genreName" />
+        <button type="button" onclick="create()">Add Genre</button>
+
+    </div>
+
+    <div id="updateformdiv">
+        <label>Genre name</label>
+        <input type="text" id="genrenametoupdate" />
+        <button type="button" onclick="update()">Update genre</button>
+
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="resultarea">
+        </tbody>
+    </table>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+    <script src="genre.js"></script>
+</body>
+</html>

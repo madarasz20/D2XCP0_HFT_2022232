@@ -39,7 +39,21 @@ th{
     margin-bottom: 10px;
 }
 
-    #updateformdiv button, label, input {
-        margin: 10px;
-        padding: 5px;
-    }
+#updateformdiv button, label, input {
+    margin: 10px;
+    padding: 5px;
+}
+
+#menu {
+    font-size: 1.1em;
+    font-weight: bolder;
+    color: #C9D2C6;
+    background-color: #2F3E46;
+    padding: 20px;
+}
+
+.menu-item {
+    border-collapse: collapse;
+    border: solid 1px darkgray;
+    padding: 10px;
+}

@@ -26,6 +26,13 @@ namespace JSClient
                 app.UseDeveloperExceptionPage();
             }
 
+            //app.UseCors(x => x
+            //    .AllowCredentials()
+            //    .AllowAnyMethod()
+            //    .AllowAnyHeader()
+            //    .WithOrigins("http://localhost:34737"));
+
+
             app.UseRouting();
 
             app.UseStaticFiles();

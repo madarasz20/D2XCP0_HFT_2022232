@@ -11,6 +11,10 @@ function linker(id) {
         case id == 'genres':
             window.location.href = "./genre.html";
             break;
+        case id == 'noncruds':
+            window.location.href = "./noncruds.html";
+            break;
+
         default:
     }
 }

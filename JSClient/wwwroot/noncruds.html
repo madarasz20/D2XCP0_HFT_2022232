@@ -6,19 +6,28 @@
     <link rel="stylesheet" href="sytle.css" />
 </head>
 <body>
+    <h1>Non CRUDs UI</h1>
     <div>
         <div id="formdiv">
-            <label>Youngest Author</label>
-            <button type="button" onclick="func_youngestauthor()">Show</button>
+            <table>
+                <tr>
+                    <th>
+                        <label>Youngest Author</label>
+                        <button type="button" onclick="func_youngestauthor()">Show</button>
+                    </th>
+                </tr>
+            </table>
+            
         </div>
         <table>
-            <thead>
+            <!--<thead>
                 <tr>
                     <th>Author Name</th>
                     <th>Age</th>
                 </tr>
-            </thead>
-            <tbody id="youngestauthor_tableid">
+            </thead>-->
+            <tbody id="resultarea">
+                
 
             </tbody>
         </table>

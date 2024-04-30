@@ -1,9 +1,9 @@
-﻿let youngestauthorcoll = [];
-const connection;
+﻿let youngestauthorcoll = {} ;
+let connection = null;
 setupSignalR();
 
 
-func_youngestauthor();
+//func_youngestauthor();
 
 
 
@@ -38,21 +38,24 @@ async function start() {
 }
 
 async function func_youngestauthor() {
-    await fetch('http://localhost:20300/stat/youngestAuthor')
+     await fetch('http://localhost:20300/stat/youngestAuthor/')
         .then(x => x.json())
-        .then(y => {
+         .then(y => {
+            //+=
             youngestauthorcoll = y;
             console.log(youngestauthorcoll);
             disp_youngestAuthor();
-        })
+        });
 }
 
 function disp_youngestAuthor() {
-    document.getElementById('youngestauthor_tableid').innerHTML = "";
-    youngestauthorcoll.forEach(t => {
-        document.getElementById('youngestauthor_tableid').innerHTML +=
+
+    document.getElementById('resultarea').innerHTML +=
+        "<thead><tr><th>Author Name</th><th>Age</th></tr></thead > ";
+
+    document.getElementById('resultarea').innerHTML +=
+        "<tr><td>" + youngestauthorcoll.authorName + "</td><td>" + youngestauthorcoll.age + "</td></tr>";
 
 
-            "<tr><td>" + t.authorName + "</td><td>" + t.age + "</td></tr>";
-    })
+    
 }

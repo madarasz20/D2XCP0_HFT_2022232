@@ -1,11 +1,7 @@
-﻿let youngestauthorcoll = {} ;
+﻿let youngestauthor = {} ;
+let oldestauthorcoll = {} ;
 let connection = null;
 setupSignalR();
-
-
-//func_youngestauthor();
-
-
 
 
 function setupSignalR() {
@@ -41,21 +37,40 @@ async function func_youngestauthor() {
      await fetch('http://localhost:20300/stat/youngestAuthor/')
         .then(x => x.json())
          .then(y => {
-            //+=
-            youngestauthorcoll = y;
-            console.log(youngestauthorcoll);
+            youngestauthor = y;
+            console.log(youngestauthor);
             disp_youngestAuthor();
         });
 }
 
 function disp_youngestAuthor() {
+    document.getElementById('resultarea').innerHTML = "";
+    document.getElementById('resultarea').innerHTML +=
+        "<thead><tr><th>Author Name</th><th>Age</th></tr></thead > ";
+
+    document.getElementById('resultarea').innerHTML +=
+        "<tr><td>" + youngestauthor.authorName + "</td><td>" + youngestauthor.age + "</td></tr>";
+
+}
+
+
+async function func_oldestauthor() {
+    await fetch('http://localhost:20300/stat/oldestAuthor/')
+        .then(x => x.json())
+        .then(y => {
+            oldestauthor = y;
+            console.log(oldestauthor);
+            disp_oldestAuthor();
+        });
+}
+
+function disp_oldestAuthor() {
+    document.getElementById('resultarea').innerHTML = "";
 
     document.getElementById('resultarea').innerHTML +=
         "<thead><tr><th>Author Name</th><th>Age</th></tr></thead > ";
 
     document.getElementById('resultarea').innerHTML +=
-        "<tr><td>" + youngestauthorcoll.authorName + "</td><td>" + youngestauthorcoll.age + "</td></tr>";
+        "<tr><td>" + oldestauthor.authorName + "</td><td>" + oldestauthor.age + "</td></tr>";
 
-
-    
 }

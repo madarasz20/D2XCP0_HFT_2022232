@@ -10,6 +10,7 @@
     <div>
         <div id="formdiv">
             <table>
+                <td>
                 <tr>
                     <th>
                         <label>Youngest Author</label>
@@ -22,13 +23,59 @@
                         <button type="button" onclick="func_oldestauthor()">Show</button>
                     </th>
                 </tr>
+                <tr>
+                    <th>
+                        <label>Best Rated Book</label>
+                        <button type="button" onclick="func_bestratedbook()">Show</button>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <label>Longest Title Book</label>
+                        <button type="button" onclick="func_bookwlt()">Show</button>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <label>Most expensive Book</label>
+                        <button type="button" onclick="func_mostexpbook()">Show</button>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <label>Books in genre</label>
+                        <button type="button" onclick="func_booksingenre()">Show</button>
+                        <input type="text" id="input_booksingenre" />
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <label>Books by author</label>
+                        <button type="button" onclick="func_booksbyauthor()">Show</button>
+                        <input type="text" id="input_booksbyauthor" />
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <label>Books with Authors</label>
+                        <button type="button" onclick="func_bookswithauthors()">Show</button>
+                    </th>
+                </tr>
+                </td>
+                <td>
+
+                    <table>
+                        <tbody id="resultarea">
+                        </tbody>
+                    </table>
+
+                </td>
+
+
             </table>
             
         </div>
-        <table>
-            <tbody id="resultarea">
-            </tbody>
-        </table>
+
     </div>
     
 

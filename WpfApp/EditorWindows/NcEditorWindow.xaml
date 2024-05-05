@@ -65,8 +65,8 @@
             <Button Content="Books in the genre" Command="{Binding BooksInGenreCommand}" Margin="5" Padding="5" FontSize="15"/>
             <Button Content="Books by Author" Command="{Binding BooksbyAuthorCommand}" Margin="5" Padding="5" FontSize="15"/>
             <Button Content="BooksWithAuthors" Command="{Binding BooksWithAuthorsCommand}" Margin="5" Padding="5" FontSize="15"/>
-            <Button Content="BGA" Command="{Binding Bga}" Margin="5" Padding="5" FontSize="15"/>
-            <Button Content="BooksandAuthorsFilteredByGenre" Command="{Binding BooksandAuthorsFilteredByGenreCommand}" Margin="5" Padding="5" FontSize="15"/>
+            <!--<Button Content="BGA" Command="{Binding Bga}" Margin="5" Padding="5" FontSize="15"/>
+            <Button Content="BooksandAuthorsFilteredByGenre" Command="{Binding BooksandAuthorsFilteredByGenreCommand}" Margin="5" Padding="5" FontSize="15"/>-->
         </ListBox>
         <StackPanel Grid.Column="1">
             <TextBox Text="{Binding Tb_input}" Padding="5" Margin="5"/>

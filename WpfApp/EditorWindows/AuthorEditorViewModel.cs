@@ -60,14 +60,16 @@ namespace WpfApp.EditorWindows
         {
             if (!IsInDesignMode)
             {
-                Authors = new RestCollection<Author>("http://localhost:20300/", "author");
+                Authors = new RestCollection<Author>("http://localhost:20300/", "Author", "hub");
+                //
 
                 CreateAuthorCommand = new RelayCommand(() =>
                 {
                     Authors.Add(new Author()
                     {
-                        AuthorName = selectedAuthor.AuthorName
+                        AuthorName = SelectedAuthor.AuthorName
                     });
+
                 });
 
                 UpdateAuthorCommand = new RelayCommand(() =>
@@ -84,7 +86,7 @@ namespace WpfApp.EditorWindows
 
                 DeleteAuthorCommand = new RelayCommand(() =>
                 {
-                    Authors.Delete(selectedAuthor.AuthorID);
+                    Authors.Delete(SelectedAuthor.AuthorID);
                 },
                     () =>
                     {

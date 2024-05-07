@@ -74,7 +74,7 @@ namespace D2XCP0_HFT_2022232.Endpoint
             .AllowAnyMethod()
             .AllowAnyHeader()
             .WithOrigins("http://localhost:34737"));
-
+            
             app.UseRouting();
 
             app.UseAuthorization();
@@ -84,6 +84,8 @@ namespace D2XCP0_HFT_2022232.Endpoint
                 endpoints.MapControllers();
                 endpoints.MapHub<SignalRHub>("/hub");
             });
+
+            
         }
     }
 }

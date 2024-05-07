@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows;
+using System.Collections.Specialized;
 
 namespace WpfApp.EditorWindows
 {
@@ -58,8 +59,8 @@ namespace WpfApp.EditorWindows
         {
             if (!IsInDesignMode)
             {
-                Books = new RestCollection<Book>("http://localhost:20300/", "book");
-
+                Books = new RestCollection<Book>("http://localhost:20300/", "Book", "hub");
+                //
                 CreateBookCommand = new RelayCommand(() =>
                 {
                     Books.Add(new Book()
@@ -73,6 +74,8 @@ namespace WpfApp.EditorWindows
                     try
                     {
                         Books.Update(SelectedBook);
+
+
                     }
                     catch (ArgumentException ex)
                     {

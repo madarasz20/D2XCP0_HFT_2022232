@@ -58,7 +58,8 @@ namespace WpfApp.EditorWindows
         {
             if (!IsInDesignMode)
             {
-                Genres = new RestCollection<Genre>("http://localhost:20300/", "genre");
+                Genres = new RestCollection<Genre>("http://localhost:20300/", "Genre", "hub");
+                //
 
                 CreateGenreCommand = new RelayCommand(() =>
                 {
